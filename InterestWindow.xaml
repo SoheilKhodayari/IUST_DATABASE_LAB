@@ -1,0 +1,69 @@
+﻿<Window x:Class="WpfApplication1.InterestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="InterestWindow" Height="517" Width="834"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+
+                <Separator HorizontalAlignment="Left" Height="15" Margin="30,40,0,0" VerticalAlignment="Top" Width="330"/>
+                <Label Content="Interest Calculation" HorizontalAlignment="Left" Height="30" Margin="80,10,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Button Content="Calculate" HorizontalAlignment="Left" Margin="260,207,0,0" VerticalAlignment="Top" Width="75" Click="btn_calculate_account_interest_clicked" RenderTransformOrigin="-0.333,0.65" />
+                <TextBlock HorizontalAlignment="Left" Margin="31,55,0,0" TextWrapping="Wrap" Text="Deposit Account Number:" VerticalAlignment="Top" RenderTransformOrigin="0.528,1.312"/>
+                <TextBlock HorizontalAlignment="Left" Margin="31,84,0,0" TextWrapping="Wrap" Text="Interest Ratio:" VerticalAlignment="Top"/>
+                <TextBox Name="DepositAccountNumber" HorizontalAlignment="Left" Height="23" Margin="192,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text=" Your Account Number "/>
+                <TextBox Name="InterestRatio" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="192,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="0"/>
+                <Label Content="Interest Payments" HorizontalAlignment="Left" Height="30" Margin="480,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="383,40,0,0" VerticalAlignment="Top" Width="302"/>
+                <TextBlock HorizontalAlignment="Left" Margin="31,116,0,0" TextWrapping="Wrap" Text="Monthly Interest(Rials):" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="30,151,0,0" TextWrapping="Wrap" Text="Total Interest In Year(Rials):" VerticalAlignment="Top"/>
+                <TextBox x:Name="MonthlyInterest" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="192,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="0"/>
+                <TextBox x:Name="YearlyInterest" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="192,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="0"/>
+                <TextBlock HorizontalAlignment="Left" Margin="383,54,0,0" TextWrapping="Wrap" Text="Deposit Account Number:" VerticalAlignment="Top" RenderTransformOrigin="0.528,1.312"/>
+                <TextBox x:Name="SourceDepositAccountNumber" HorizontalAlignment="Left" Height="23" Margin="552,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Text="source deposit account"/>
+                <TextBlock HorizontalAlignment="Left" Margin="383,116,0,0" TextWrapping="Wrap" Text="Saving Account Number:" VerticalAlignment="Top" RenderTransformOrigin="0.528,1.312"/>
+                <TextBox x:Name="DestSavingAccountNumber" HorizontalAlignment="Left" Height="23" Margin="552,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Text="dest saving account "/>
+                <Button Content="Pay" HorizontalAlignment="Left" Margin="610,207,0,0" VerticalAlignment="Top" Width="75" Click="btn_pay_clicked" />
+            </Grid>
+
+        </Border>
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="325,35,351,0" VerticalAlignment="Top" Width="150" Content="Interest Form" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+
+
+    </Grid>
+</Window>
+

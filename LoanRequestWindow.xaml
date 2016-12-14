@@ -1,0 +1,82 @@
+﻿<Window x:Class="WpfApplication1.LoanRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoanRequestWindow" Height="517" Width="834"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+
+                <Separator HorizontalAlignment="Left" Height="15" Margin="40,275,0,0" VerticalAlignment="Top" Width="625"/>
+                <Label Content="Finalize" HorizontalAlignment="Left" Height="30" Margin="320,245,0,0" VerticalAlignment="Top" Width="70" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Button Style="{StaticResource LinkButton}" Content="Calculate" Margin="520,76,115,253" Click="CalculateInstallments" />
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy1" HorizontalAlignment="Left" Margin="394,122,0,0" TextWrapping="Wrap" Text="Monthly Payment:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <Label Content="Installments" HorizontalAlignment="Left" Height="30" Margin="450,18,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="394,48,0,0" VerticalAlignment="Top" Width="301"/>
+                <Label Content="Loan Details" HorizontalAlignment="Left" Height="30" Margin="80,18,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="25,48,0,0" VerticalAlignment="Top" Width="320"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy3" HorizontalAlignment="Left" Margin="25,166,0,0" TextWrapping="Wrap" Text="Returning Duration:" VerticalAlignment="Top" Width="110"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy4" HorizontalAlignment="Left" Margin="25,204,0,0" TextWrapping="Wrap" Text="Interest rate:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy5" HorizontalAlignment="Left" Margin="25,129,0,0" TextWrapping="Wrap" Text="Amount(Rials):" VerticalAlignment="Top" Width="95"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy6" HorizontalAlignment="Left" Margin="25,76,0,0" TextWrapping="Wrap" Text="Customer Account Number:" VerticalAlignment="Top" Width="150"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy7" HorizontalAlignment="Left" Margin="394,169,0,0" TextWrapping="Wrap" Text="Total Payable:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501" Width="96"/>
+                <TextBox IsReadOnly="True" Name="MonthlyInstallment" HorizontalAlignment="Left" Height="23" Margin="520,122,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.167,0.261"/>
+                <TextBox x:Name="SavingAccountNumber" HorizontalAlignment="Left" Height="23" Margin="190,74,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.167,0.261"/>
+                <TextBox IsReadOnly="True" x:Name="TotalPayable" HorizontalAlignment="Left" Height="23" Margin="520,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.167,0.261"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="394,76,0,0" TextWrapping="Wrap" Text="Installments:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox x:Name="LoanAmount" HorizontalAlignment="Left" Height="23" Margin="190,122,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.167,0.261"/>
+                <TextBox x:Name="InterestRate" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="190,204,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.167,0.261"/>
+                <ComboBox Name="ReturningDuration" HorizontalAlignment="Left" Margin="190,166,0,0" VerticalAlignment="Top" Width="125" SelectionChanged="ReturningDuration_SelectionChanged">
+                    <ComboBoxItem Tag="3" Content="3 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="6" Content="6 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="9" Content="9 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="12" Content="12 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="15" Content="15 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="18" Content="18 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="21" Content="21 Month" HorizontalAlignment="Left" Width="123"/>
+                    <ComboBoxItem Tag="24" Content="24 Month" HorizontalAlignment="Left" Width="123"/>
+                    
+                </ComboBox>
+                <Button Content="Finalize" Click="FinalizeLoan" HorizontalAlignment="Left" Margin="375,305,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Cancel" Click="CancelLoan"  HorizontalAlignment="Left" Margin="270,305,0,0" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+
+        </Border>
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="310,35,326,0" VerticalAlignment="Top" Width="190" Content="Loan Request Form" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+
+
+    </Grid>
+</Window>

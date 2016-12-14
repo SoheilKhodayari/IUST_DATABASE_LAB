@@ -1,0 +1,77 @@
+﻿<Window x:Class="WpfApplication1.WithdrawlDepositForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WithdrawlDepositForm" Height="517" Width="834"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+
+                <Separator HorizontalAlignment="Left" Height="15" Margin="355,204,0,0" VerticalAlignment="Top" Width="320"/>
+                <Label Content="Deposit" HorizontalAlignment="Left" Height="30" Margin="460,174,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="150,285,0,0" TextWrapping="Wrap" Text="1000000 Rials" VerticalAlignment="Top" Width="90"/>
+                <TextBlock Name="PrimaryBalanceTxt" HorizontalAlignment="Left" Margin="40,285,0,0" TextWrapping="Wrap" Text="Current Balance:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="381,288,0,0" TextWrapping="Wrap" Text="deposit:" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource LinkButton}" Content="confirm deposit" Margin="520,291,40,14" Click="deposit_confirm" />
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy1" HorizontalAlignment="Left" Margin="381,87,0,0" TextWrapping="Wrap" Text="Withdrawal Amount:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <Button Style="{StaticResource LinkButton}" Content="confirm withdraw" Margin="520,129,40,176" Click="withdraw_confirm" />
+                <Label Content="Withdrawal" HorizontalAlignment="Left" Height="30" Margin="450,18,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="355,48,0,0" VerticalAlignment="Top" Width="320"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="40,243,0,0" TextWrapping="Wrap" Text="Account Type:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountType" HorizontalAlignment="Left" Margin="150,246,0,0" TextWrapping="Wrap" Text="Saving Account" VerticalAlignment="Top" Width="90"/>
+                <Label Content="Account Details" HorizontalAlignment="Left" Height="30" Margin="80,18,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="25,48,0,0" VerticalAlignment="Top" Width="265"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy3" HorizontalAlignment="Left" Margin="40,166,0,0" TextWrapping="Wrap" Text="Branch Code:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountBranchCode" HorizontalAlignment="Left" Margin="150,166,0,0" TextWrapping="Wrap" Text="512151" VerticalAlignment="Top" Width="90"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy4" HorizontalAlignment="Left" Margin="40,204,0,0" TextWrapping="Wrap" Text="Opening Date:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountOpeningDate" HorizontalAlignment="Left" Margin="150,204,0,0" TextWrapping="Wrap" Text="25-09-1996" VerticalAlignment="Top" Width="90"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy5" HorizontalAlignment="Left" Margin="40,129,0,0" TextWrapping="Wrap" Text="SSN:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock x:Name="AccountPersonSSN" HorizontalAlignment="Left" Margin="150,129,0,0" TextWrapping="Wrap" Text="0311156268" VerticalAlignment="Top" Width="90"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy6" HorizontalAlignment="Left" Margin="40,90,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock x:Name="AccountPersonName" HorizontalAlignment="Left" Margin="150,93,0,0" TextWrapping="Wrap" Text="Soheil Khodayari" VerticalAlignment="Top" Width="90"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy7" HorizontalAlignment="Left" Margin="381,129,0,0" TextWrapping="Wrap" Text="Withdraw:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox Name="WithdrawalAmount" HorizontalAlignment="Left" Height="23" Margin="520,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy8" HorizontalAlignment="Left" Margin="381,249,0,0" TextWrapping="Wrap" Text="Deposit Amount:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox Name="DepositAmount" HorizontalAlignment="Left" Height="23" Margin="520,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+            </Grid>
+
+        </Border>
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="275,35,301,0" VerticalAlignment="Top" Width="250" Content="Withdrawal Deposit Form" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+        <Label  Name="LeftHeadingAccount" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" Content="AccountId: 547" FontWeight="Bold" FontSize="16" Foreground="#FF000000" FontStyle="Italic" Margin="605,39,21,0" />
+
+
+    </Grid>
+</Window>

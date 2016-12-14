@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfApplication1.CheckIssuanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CheckIssuanceWindow" Height="400" Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="250" Margin="50,80,0,0" VerticalAlignment="Top" Width="400">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-22,0" VerticalAlignment="Top" Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Check Information" HorizontalAlignment="Left" Height="30" Margin="115,26,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="7" Margin="25,56,0,0" VerticalAlignment="Top" Width="335"/>
+                <TextBlock x:Name="AccountNumberTxtBlock" HorizontalAlignment="Left" Margin="40,90,0,0" TextWrapping="Wrap" Text="Current Account Number:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox Name="AccountNumber" HorizontalAlignment="Left" Height="23" Margin="215,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.261"/>
+                <Button Content="Issue" Click="btn_issue_clicked" HorizontalAlignment="Left" Margin="260,155,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Cancel" Click="btn_cancel_clicked" HorizontalAlignment="Left" Margin="160,155,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.067,0.5"/>
+            </Grid>
+
+        </Border>
+        <Label  Name="TopHeadingCheckIssuance" HorizontalAlignment="Center" Height="40" Margin="185,35,147,0" VerticalAlignment="Top" Width="160" Content="Check Issuance" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+
+
+    </Grid>
+</Window>
+

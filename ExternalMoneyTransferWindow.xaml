@@ -1,0 +1,64 @@
+﻿<Window x:Class="WpfApplication1.ExternalMoneyTransferWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ExternalMoneyTransferWindow" Height="517" Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="400">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy1" HorizontalAlignment="Left" Margin="51,160,0,0" TextWrapping="Wrap" Text="Destination Account:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <Label Content="Transfer Info" HorizontalAlignment="Left" Height="30" Margin="115,26,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="25,48,0,0" VerticalAlignment="Top" Width="385"/>
+                <TextBox Name="DestinationAccount" HorizontalAlignment="Left" Height="23" Margin="205,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy8" HorizontalAlignment="Left" Margin="50,68,0,0" TextWrapping="Wrap" Text="Source Account:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox Name="SourceAccount" HorizontalAlignment="Left" Height="23" Margin="205,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="51,205,0,0" TextWrapping="Wrap" Text="Amount (Rials):" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="51,247,0,0" TextWrapping="Wrap" Text="Requester Name:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox x:Name="AmountMoney" HorizontalAlignment="Left" Height="23" Margin="205,205,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+                <TextBox x:Name="RequesterName" HorizontalAlignment="Left" Height="23" Margin="205,247,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+                <Button Content="confim" Click="btn_submit_clicked" HorizontalAlignment="Left" Margin="285,310,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button Content="reset" Click="btn_reset_clicked" HorizontalAlignment="Left" Margin="190,310,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.067,0.5"/>
+                <TextBlock x:Name="DestinationBankTxt" HorizontalAlignment="Left" Margin="50,110,0,0" TextWrapping="Wrap" Text="Destination Bank:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
+                <TextBox x:Name="DestinationBank" HorizontalAlignment="Left" Height="23" Margin="205,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.167,0.261"/>
+            </Grid>
+
+        </Border>
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="90,35,57,0" VerticalAlignment="Top" Width="345" Content="External Money Transfer(SATNA)" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+
+
+    </Grid>
+</Window>
+

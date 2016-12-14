@@ -1,0 +1,82 @@
+﻿<Window x:Class="WpfApplication1.AccountManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AccountManagementWindow" Height="517" Width="834"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+
+                <Separator HorizontalAlignment="Left" Height="15" Margin="30,40,0,0" VerticalAlignment="Top" Width="265"/>
+                <Label Content="Customer Detail Edit" HorizontalAlignment="Left" Height="30" Margin="80,10,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+
+                <Separator HorizontalAlignment="Left" Height="15" Margin="420,164,0,0" VerticalAlignment="Top" Width="265"/>
+                <Label Content="Account Closing" HorizontalAlignment="Left" Height="30" Margin="480,129,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Button Content="Submit" HorizontalAlignment="Left" Margin="180,186,0,0" VerticalAlignment="Top" Width="75" Click="edit_customer_details" />
+                <Button Content="Cancel" HorizontalAlignment="Left" Margin="90,185,0,0" VerticalAlignment="Top" Width="75" Click="Close_Window"/>
+                <TextBlock HorizontalAlignment="Left" Margin="31,55,0,0" TextWrapping="Wrap" Text="Phone:" VerticalAlignment="Top" RenderTransformOrigin="0.528,1.312"/>
+                <TextBlock HorizontalAlignment="Left" Margin="31,84,0,0" TextWrapping="Wrap" Text="Mobile:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="30,116,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top"/>
+                <TextBox Name="phone" HorizontalAlignment="Left" Height="23" Margin="112,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Home Phone "/>
+                <TextBox Name="mobile" HorizontalAlignment="Left" Height="23" Margin="112,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Mobile Number"/>
+                <TextBox Name="address" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Height="60" Margin="112,116,0,0" VerticalAlignment="Top" Width="143" Text="Residence&#xA;Address"/>
+                <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="560,97,0,0" TextWrapping="Wrap" Text="1000000 Rials" VerticalAlignment="Top" Width="90"/>
+                <TextBlock Name="PrimaryBalanceTxt" HorizontalAlignment="Left" Margin="445,94,0,0" TextWrapping="Wrap" Text="Current Balance:" VerticalAlignment="Top" Width="95"/>
+                <Label Content="Account Blocking" HorizontalAlignment="Left" Height="30" Margin="480,222,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="445,185,0,0" TextWrapping="Wrap" Text="Close Account:" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource LinkButton}" Content="confirm close" Margin="550,184,10,121" Click="close_account_confirm" />
+                <Separator HorizontalAlignment="Left" Height="15" Margin="420,257,0,0" VerticalAlignment="Top" Width="265"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy1" HorizontalAlignment="Left" Margin="445,277,0,0" TextWrapping="Wrap" Text="Block Account:" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource LinkButton}" Content="confirm block" Margin="550,277,10,28" Click="block_account_confirm" />
+                <Label Content="Account Balance" HorizontalAlignment="Left" Height="30" Margin="480,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="420,40,0,0" VerticalAlignment="Top" Width="265"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="445,60,0,0" TextWrapping="Wrap" Text="Current Type:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountType" HorizontalAlignment="Left" Margin="560,60,0,0" TextWrapping="Wrap" Text="Saving Account" VerticalAlignment="Top" Width="90"/>
+                <Label Content="Account Details" HorizontalAlignment="Left" Height="30" Margin="90,230,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="30,257,0,0" VerticalAlignment="Top" Width="265"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy3" HorizontalAlignment="Left" Margin="55,277,0,0" TextWrapping="Wrap" Text="Branch Code:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountBranchCode" HorizontalAlignment="Left" Margin="165,277,0,0" TextWrapping="Wrap" Text="512151" VerticalAlignment="Top" Width="90"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy4" HorizontalAlignment="Left" Margin="55,306,0,0" TextWrapping="Wrap" Text="Opening Date" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountOpeningDate" HorizontalAlignment="Left" Margin="165,309,0,0" TextWrapping="Wrap" Text="25-09-1996" VerticalAlignment="Top" Width="90"/>
+            </Grid>
+
+        </Border>
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="275,35,316,0" VerticalAlignment="Top" Width="235" Content="Account Management" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+        <Label  Name="LeftHeadingAccount" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" Content="AccountId: 547" FontWeight="Bold" FontSize="16" Foreground="#FF000000" FontStyle="Italic" Margin="605,39,21,0" />
+
+
+    </Grid>
+</Window>
