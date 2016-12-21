@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
 
 namespace WpfApplication1
 {
@@ -19,9 +22,13 @@ namespace WpfApplication1
     /// </summary>
     public partial class InterestWindow : Window
     {
+        protected AppContext db;
         public InterestWindow()
         {
             InitializeComponent();
+            db = new AppContext();
+            
+
         }
 
         private void btn_pay_clicked(object sender, RoutedEventArgs e)
@@ -43,6 +50,8 @@ namespace WpfApplication1
             InterestRatio.Text = "20";
             MonthlyInterest.Text = "500000";
             YearlyInterest.Text = "6000000";
+            string d = db.Database.SqlQuery<string>("select name from person").FirstOrDefault<string>();
+            MessageBox.Show(d);
         }
 
     }

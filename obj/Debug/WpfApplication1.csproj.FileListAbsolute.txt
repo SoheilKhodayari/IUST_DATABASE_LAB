@@ -1,6 +1,12 @@
+C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.exe
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\WpfApplication1.exe.config
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\WpfApplication1.exe
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\WpfApplication1.pdb
+C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\EntityFramework.dll
+C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\EntityFramework.xml
+C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\AccountManagementInputDialog.baml
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\AccountManagementWindow.baml
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\AccountOpeningWindow.baml
@@ -40,6 +46,4 @@ C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.g.resources
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.Properties.Resources.resources
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
-C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.exe
 C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.pdb
-C:\Users\soheil\documents\visual studio 2013\Projects\WpfApplication1\obj\Debug\WpfApplication1.csprojResolveAssemblyReference.cache

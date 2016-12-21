@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,15 @@ namespace WpfApplication1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class LoginWindow : Window
     {
         public LoginWindow()
         {
             InitializeComponent();
         }
+
 
         private void AdminArea_Click(object sender, RoutedEventArgs e)
         {
