@@ -73,6 +73,9 @@
     <Compile Include="AccountManagementWindow.xaml.cs">
       <DependentUpon>AccountManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BossMessagesWindow.xaml.cs">
+      <DependentUpon>BossMessagesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CheckClearingWindow.xaml.cs">
       <DependentUpon>CheckClearingWindow.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,9 @@
     <Compile Include="ManageStaffHoursWindow.xaml.cs">
       <DependentUpon>ManageStaffHoursWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="message.xaml.cs">
+      <DependentUpon>message.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PresentWorkingHoursWindow.xaml.cs">
       <DependentUpon>PresentWorkingHoursWindow.xaml</DependentUpon>
     </Compile>
@@ -124,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AccountOpeningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BossMessagesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ManageStaffHoursWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="message.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

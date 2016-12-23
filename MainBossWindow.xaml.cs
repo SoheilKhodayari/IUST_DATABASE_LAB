@@ -148,5 +148,11 @@ namespace WpfApplication1
             w.Show();
         }
 
+        private void go_to_MessageWindow(object sender, RoutedEventArgs e)
+        {
+            var w = new BossMessagesWindow(this.loginId, this.bank_code);
+            w.Show();
+        }
+
     }
 }
