@@ -1,0 +1,76 @@
+﻿<Window x:Class="WpfApplication1.CreateLotteryOfCentralBranches"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CreateLotteryOfCentralBranches" Height="517" Width="834"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Icons/Exchange.png">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
+            <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+
+                <Separator HorizontalAlignment="Left" Height="15" Margin="30,40,0,0" VerticalAlignment="Top" Width="265"/>
+                <Label Content="Lottery Detail" HorizontalAlignment="Left" Height="30" Margin="80,10,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <TextBlock HorizontalAlignment="Left" Margin="31,63,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" RenderTransformOrigin="0.528,1.312"/>
+                <TextBlock HorizontalAlignment="Left" Margin="31,97,0,0" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="30,127,0,0" TextWrapping="Wrap" Text="Number of Winners:" VerticalAlignment="Top"/>
+                <TextBox Name="LotteryName" HorizontalAlignment="Left" Height="23" Margin="112,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Text=""/>
+                <TextBox Name="LotteryDate" HorizontalAlignment="Left" Height="23" Margin="112,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Text="DD-MM-YYYY" RenderTransformOrigin="0.51,1.391"/>
+                <Button Style="{StaticResource LinkButton}" Content="Add Account" Margin="600,90,35,231" Click="btn_add_particpant_account_clicked" />
+                <Label Content="Participators" HorizontalAlignment="Left" Height="30" Margin="480,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="420,40,0,0" VerticalAlignment="Top" Width="265"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="420,60,0,0" TextWrapping="Wrap" Text="Saving Account Number:" VerticalAlignment="Top" Width="143"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="30,257,0,0" VerticalAlignment="Top" Width="655"/>
+                <TextBox x:Name="LotteryWinnersCount" HorizontalAlignment="Left" Height="23" Margin="152,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text=""/>
+                <TextBlock HorizontalAlignment="Left" Margin="30,157,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
+                <TextBox x:Name="LotteryDescription" HorizontalAlignment="Left" Height="74" Margin="30,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="655" Text=""/>
+                <Button Content="Submit" HorizontalAlignment="Left" Margin="220,278,0,0" VerticalAlignment="Top" Width="75" Click="btn_submit_lottery_creation_clicked"/>
+                <Button Content="Cancel" HorizontalAlignment="Left" Margin="125,277,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.973,-1.35" Click="btn_cancel_lottery_creation_clicked"/>
+                <Button Content="Reset" HorizontalAlignment="Left" Margin="31,277,0,0" VerticalAlignment="Top" Width="75" Click="btn_reset_lottery_creation_clicked"/>
+                <TextBox  x:Name="LotteryParticipantAId" HorizontalAlignment="Left" Height="23" Margin="420,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text=""/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="420,137,0,0" TextWrapping="Wrap" Text="Add All Saving Accounts:" VerticalAlignment="Top" Width="143"/>
+            </Grid>
+
+        </Border>
+        <Label  Foreground="#FF292272" Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="35" Margin="80,26,331,0" VerticalAlignment="Top" Width="415" Content="Create Lottery Form By Central Branches" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.594,0.75" />
+        <Label  FontStyle="Italic" Name="BranchIdHeading" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="218" Content="BranchId: 547" FontWeight="Bold" FontSize="16" Foreground="#FF000000"  Margin="557,30,51,0" />
+        <GridSplitter HorizontalAlignment="Left" Height="2" Margin="50,7,0,0" VerticalAlignment="Top" Width="725" Background="Black"/>
+        <GridSplitter HorizontalAlignment="Left" Height="73" Margin="50,7,0,0" VerticalAlignment="Top" Width="2" Background="Black"/>
+        <GridSplitter HorizontalAlignment="Left" Height="73" Margin="773,7,0,0" VerticalAlignment="Top" Width="2" Background="Black"/>
+        <CheckBox Name="LotteryAddAll" Content="Add All" HorizontalAlignment="Left" Margin="669,230,0,0" VerticalAlignment="Top" Checked="LotteryAddAll_Checked" Unchecked="LotteryAddAll_UnChecked"/>
+
+
+    </Grid>
+</Window>

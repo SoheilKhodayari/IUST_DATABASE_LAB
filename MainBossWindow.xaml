@@ -177,8 +177,9 @@
                 <Label Content="Working Hours" HorizontalAlignment="Left" Height="30" Margin="510,222,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="10" Margin="465,80,0,0" VerticalAlignment="Top" Width="175"/>
                 <Label Content="Other Operations" HorizontalAlignment="Left" Height="30" Margin="510,45,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
-                <Button Style="{StaticResource LinkButton}" Content="14- Manage Staff Hours" Margin="495,304,65,27" Click="go_to_ManageSaffWorkingHoursWindow" />
-                <Button Style="{StaticResource LinkButton}" Content="13- Present Working Hours" Margin="495,272,65,59" Click="go_to_PresentWorkingHoursWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="15- Manage Staff Hours" Margin="495,304,65,27" Click="go_to_ManageSaffWorkingHoursWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="14- Present Working Hours" Margin="495,272,65,59" Click="go_to_PresentWorkingHoursWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="13- Create Lottery" Margin="495,188,65,143" Click="go_to_CreateLotteryCentralBranch" />
             </Grid>
 
         </Border>

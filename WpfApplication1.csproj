@@ -82,6 +82,9 @@
     <Compile Include="CheckIssuanceWindow.xaml.cs">
       <DependentUpon>CheckIssuanceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateLotteryOfCentralBranches.xaml.cs">
+      <DependentUpon>CreateLotteryOfCentralBranches.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreditCardIssueWindow.xaml.cs">
       <DependentUpon>CreditCardIssueWindow.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CheckIssuanceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateLotteryOfCentralBranches.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
