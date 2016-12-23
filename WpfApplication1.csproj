@@ -73,6 +73,12 @@
     <Compile Include="AccountManagementWindow.xaml.cs">
       <DependentUpon>AccountManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LotteryDetailWindow.xaml.cs">
+      <DependentUpon>LotteryDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LotteryListView.xaml.cs">
+      <DependentUpon>LotteryListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BossMessagesWindow.xaml.cs">
       <DependentUpon>BossMessagesWindow.xaml</DependentUpon>
     </Compile>
@@ -133,6 +139,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AccountOpeningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LotteryDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LotteryListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

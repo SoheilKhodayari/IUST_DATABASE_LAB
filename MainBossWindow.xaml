@@ -161,25 +161,26 @@
                 <Button Style="{StaticResource LinkButton}" Content="5- External Money Tranfer (SATNA)" Margin="55,272,430,51" Click="go_to_ExternalTransferMoneyWindow" />
                 <Button Style="{StaticResource LinkButton}" Content="6- Internal Money Transfer" Margin="55,304,505,25" Click="go_to_InternalTransferMoneyWindow" />
                 <Button Style="{StaticResource LinkButton}" Content="9- Loan Request" Margin="285,272,275,53" Click="go_to_LoanRequestWindow" />
-                <Button Style="{StaticResource LinkButton}" Content="10- Credit Card Issuance" Margin="495,95,65,228" Click="go_to_CreditCardIssuanceWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="10- Credit Card Issuance" Margin="285,304,275,19" Click="go_to_CreditCardIssuanceWindow" />
                 <Button Style="{StaticResource LinkButton}" Content="7- Check Issuance" Margin="285,95,275,228" Click="go_to_CheckIssuanceWindow" />
                 <Button Style="{StaticResource LinkButton}" Content="8- Check Clearing" Margin="285,124,275,199" Click="go_to_CheckClearingWindow" />
                 <Button Style="{StaticResource LinkButton}" Content="4- Interests" Margin="55,188,505,135" Click="go_to_InterestWindow" />
-                <Button Style="{StaticResource LinkButton}" Content="12- Messages" Margin="495,156,65,175" Click="go_to_MessageWindow" />
-                <Button Style="{StaticResource LinkButton}" Content="11- Foreign Currency Exchange" Margin="495,124,35,205" Click="go_to_ForeignCurrencygWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="12- Messages" Margin="495,124,65,207" Click="go_to_MessageWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="11- Foreign Currency Exchange" Margin="495,95,35,234" Click="go_to_ForeignCurrencygWindow" />
                 <Label Content="Transfer Operations" HorizontalAlignment="Left" Height="30" Margin="55,222,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="10" Margin="40,257,0,0" VerticalAlignment="Top" Width="210"/>
                 <Separator HorizontalAlignment="Left" Height="10" Margin="270,80,0,0" VerticalAlignment="Top" Width="175"/>
                 <Label Content="Check Operations" HorizontalAlignment="Left" Height="30" Margin="300,45,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="10" Margin="270,257,0,0" VerticalAlignment="Top" Width="175"/>
-                <Label Content="Loan Request" HorizontalAlignment="Left" Height="30" Margin="300,222,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Label Content="Loan - Credit Card" HorizontalAlignment="Left" Height="30" Margin="300,222,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="10" Margin="465,257,0,0" VerticalAlignment="Top" Width="175"/>
                 <Label Content="Working Hours" HorizontalAlignment="Left" Height="30" Margin="510,222,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="10" Margin="465,80,0,0" VerticalAlignment="Top" Width="175"/>
                 <Label Content="Other Operations" HorizontalAlignment="Left" Height="30" Margin="510,45,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
-                <Button Style="{StaticResource LinkButton}" Content="15- Manage Staff Hours" Margin="495,304,65,27" Click="go_to_ManageSaffWorkingHoursWindow" />
-                <Button Style="{StaticResource LinkButton}" Content="14- Present Working Hours" Margin="495,272,65,59" Click="go_to_PresentWorkingHoursWindow" />
-                <Button Style="{StaticResource LinkButton}" Content="13- Create Lottery" Margin="495,188,65,143" Click="go_to_CreateLotteryCentralBranch" />
+                <Button Style="{StaticResource LinkButton}" Content="16- Manage Staff Hours" Margin="495,304,65,27" Click="go_to_ManageSaffWorkingHoursWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="15- Present Working Hours" Margin="495,272,65,59" Click="go_to_PresentWorkingHoursWindow" />
+                <Button Style="{StaticResource LinkButton}" Content="13- Create Lottery" Margin="495,156,65,175" Click="go_to_CreateLotteryCentralBranch" />
+                <Button Style="{StaticResource LinkButton}" Content="14- Lottery List" Margin="495,188,65,143" Click="go_to_LotteryListView" />
             </Grid>
 
         </Border>

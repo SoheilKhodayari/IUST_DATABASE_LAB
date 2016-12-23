@@ -178,5 +178,11 @@ namespace WpfApplication1
 
         }
 
+        private void go_to_LotteryListView(object sender, RoutedEventArgs e)
+        {
+            var w = new LotteryListView(this.branch_code,this.bank_code);
+            w.Show();
+        }
+
     }
 }
