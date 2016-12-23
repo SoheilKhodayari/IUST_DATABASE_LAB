@@ -144,8 +144,8 @@ namespace WpfApplication1
 
         private void go_to_ManageSaffWorkingHoursWindow(object sender, RoutedEventArgs e)
         {
-           // var w = new ManageStaffWorkingHoursWindow(this.branch_code);
-            //w.Show();
+            var w = new ManageStaffHoursWindow(this.branch_code);
+            w.Show();
         }
 
     }

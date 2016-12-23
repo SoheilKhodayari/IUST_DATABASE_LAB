@@ -101,6 +101,9 @@
     <Compile Include="MainBossWindow.xaml.cs">
       <DependentUpon>MainBossWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageStaffHoursWindow.xaml.cs">
+      <DependentUpon>ManageStaffHoursWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PresentWorkingHoursWindow.xaml.cs">
       <DependentUpon>PresentWorkingHoursWindow.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainStaffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageStaffHoursWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
