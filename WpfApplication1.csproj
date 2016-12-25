@@ -101,6 +101,47 @@
     <Compile Include="MainBossWindow.xaml.cs">
       <DependentUpon>MainBossWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Available_Foreign_Currency.cs" />
+    <Compile Include="Models\Bank.cs" />
+    <Compile Include="Models\BankDBContext.cs" />
+    <Compile Include="Models\Boss.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Branch_Phone.cs" />
+    <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\Check_Paper.cs" />
+    <Compile Include="Models\CreditCard.cs" />
+    <Compile Include="Models\CurrentAccount.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DepositAccount.cs" />
+    <Compile Include="Models\ForeignCurrencyAccount.cs" />
+    <Compile Include="Models\Loan.cs" />
+    <Compile Include="Models\Lottery.cs" />
+    <Compile Include="Models\Mapping\Available_Foreign_CurrencyMap.cs" />
+    <Compile Include="Models\Mapping\BankMap.cs" />
+    <Compile Include="Models\Mapping\BossMap.cs" />
+    <Compile Include="Models\Mapping\BranchMap.cs" />
+    <Compile Include="Models\Mapping\Branch_PhoneMap.cs" />
+    <Compile Include="Models\Mapping\CheckMap.cs" />
+    <Compile Include="Models\Mapping\Check_PaperMap.cs" />
+    <Compile Include="Models\Mapping\CreditCardMap.cs" />
+    <Compile Include="Models\Mapping\CurrentAccountMap.cs" />
+    <Compile Include="Models\Mapping\CustomerMap.cs" />
+    <Compile Include="Models\Mapping\DepositAccountMap.cs" />
+    <Compile Include="Models\Mapping\ForeignCurrencyAccountMap.cs" />
+    <Compile Include="Models\Mapping\LoanMap.cs" />
+    <Compile Include="Models\Mapping\LotteryMap.cs" />
+    <Compile Include="Models\Mapping\MessageMap.cs" />
+    <Compile Include="Models\Mapping\PersonMap.cs" />
+    <Compile Include="Models\Mapping\Person_PhoneMap.cs" />
+    <Compile Include="Models\Mapping\SavingAccountMap.cs" />
+    <Compile Include="Models\Mapping\StaffMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Person_Phone.cs" />
+    <Compile Include="Models\SavingAccount.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="PresentWorkingHoursWindow.xaml.cs">
       <DependentUpon>PresentWorkingHoursWindow.xaml</DependentUpon>
     </Compile>

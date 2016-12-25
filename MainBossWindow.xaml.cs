@@ -26,6 +26,7 @@ namespace WpfApplication1
         public string bank_name { get; set; }
 
         public string bank_code { get; set; }
+        public string is_central { get; set; } // 1 for true, 0 for false
 
         public int loginId { get; set; } //boss id in tbl
 
@@ -144,8 +145,43 @@ namespace WpfApplication1
 
         private void go_to_ManageSaffWorkingHoursWindow(object sender, RoutedEventArgs e)
         {
-           // var w = new ManageStaffWorkingHoursWindow(this.branch_code);
-            //w.Show();
+            var w = new ManageStaffHoursWindow(this.branch_code);
+            w.Show();
+        }
+
+        private void go_to_MessageWindow(object sender, RoutedEventArgs e)
+        {
+            var w = new BossMessagesWindow(this.loginId, this.bank_code);
+            w.Show();
+        }
+        private void set_branch_central_status()
+        {
+             // set  this.is_central based on db and bank_code and branch_code
+            this.is_central = "1";
+        }
+        private void go_to_CreateLotteryCentralBranch(object sender , RoutedEventArgs e)
+        {
+            if(this.is_central == null)
+            {
+                set_branch_central_status();
+            }
+            if(this.is_central=="1")
+            {
+                var w = new CreateLotteryOfCentralBranches(this.branch_code);
+                w.Show();
+            }
+            else
+            {
+                MessageBox.Show("You Are Not Authorized to Create Lottery, Only Central Branches Have Neccessary Permissions!!");
+            }
+
+
+        }
+
+        private void go_to_LotteryListView(object sender, RoutedEventArgs e)
+        {
+            var w = new LotteryListView(this.branch_code,this.bank_code);
+            w.Show();
         }
 
     }

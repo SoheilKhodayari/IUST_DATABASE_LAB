@@ -23,9 +23,11 @@ namespace WpfApplication1
 
     public partial class LoginWindow : Window
     {
+        private AppContext _db;
         public LoginWindow()
         {
             InitializeComponent();
+            _db = new AppContext();
         }
 
 
@@ -82,6 +84,15 @@ namespace WpfApplication1
 
             if(!username.Equals("") && !password.Equals("") && !branch_code.Equals(""))
             {
+                string authenticationQuery = @"Select p.PId,p.SSN,p.Name,s.BranchId_FK, s.SystemPassword From Staff as s inner join Person as p on s.SId = p.PId
+                where p.SSN = '{0}' and s.SystemPassword = '{1}' ";
+                authenticationQuery = string.Format(authenticationQuery, username, password);
+                var matchedCredentialRow = _db.Database.SqlQuery<List<string>>(authenticationQuery).FirstOrDefault();
+                if(matchedCredentialRow == null)
+                {
+                    MessageBox.Show("Wrong Credentials");
+                    return;
+                }
 
                 /* do login from db here */
                 var bank_name = "SADERAT";
