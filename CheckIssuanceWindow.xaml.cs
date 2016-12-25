@@ -36,15 +36,8 @@ namespace WpfApplication1
         {
 
             string AccountNo = AccountNumber.Text;
-            ctx.Database.ExecuteSqlCommand(
-                "insert into \"Check\" values(@aid,@checkId,@expirationDate,@paperNo)",
-                new SqlParameter("aid", Int32.Parse(AccountNo)),
-                new SqlParameter("checkId", 21),
-                new SqlParameter("expirationDate", "2015-09-22"),
-                new SqlParameter("paperNo", 10)
-            );
-
-            // to do
+            DbHelper.getInstance().checkInsurance(AccountNo);
+            
             MessageBox.Show("Check Issuance Confirmed!");
         }
     }
