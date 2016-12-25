@@ -29,7 +29,9 @@ namespace WpfApplication1
 
         public int loginId { get; set; }
 
-        public MainStaffWindow(int loginId,string bank_name, string branch_name, string bank_code,string branch_code, string staff_name)
+        public string is_central { get; set; }
+
+        public MainStaffWindow(int loginId,string bank_name, string branch_name, string bank_code,string branch_code, string staff_name, string is_central)
         {
             InitializeComponent();
             this.loginId = loginId;
@@ -38,6 +40,7 @@ namespace WpfApplication1
             this.branch_code = branch_code;
             this.bank_name = bank_name;
             this.bank_code = bank_code;
+            this.is_central = is_central;
 
 
             this.TopHeadingStaff.Content = this.bank_name.ToString().ToUpper() + " BANK " + this.branch_name.ToString().ToUpper() + " BRANCH";
