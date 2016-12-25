@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -22,11 +22,11 @@ namespace WpfApplication1
     /// </summary>
     public partial class InterestWindow : Window
     {
-        protected AppContext db;
+        protected BankDBContext db;
         public InterestWindow()
         {
             InitializeComponent();
-            db = new AppContext();
+            db = new BankDBContext();
             
 
         }

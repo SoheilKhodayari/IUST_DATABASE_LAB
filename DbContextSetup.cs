@@ -40,10 +40,7 @@ namespace WpfApplication1
                 var x = _ctx.Database.SqlQuery<Person>("Select * from person").ToArray();
             }
 
-            public void creditCardIssue_AccountCard(string balance)
-            {
-
-            }
+            
         }
 
 }

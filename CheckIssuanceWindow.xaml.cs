@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -20,11 +21,11 @@ namespace WpfApplication1
     /// </summary>
     public partial class CheckIssuanceWindow : Window
     {
-        AppContext ctx;
+        BankDBContext ctx;
         public CheckIssuanceWindow()
         {
             InitializeComponent();
-            ctx = new AppContext();
+            ctx = new BankDBContext();
         }
 
         private void btn_cancel_clicked(object sender, RoutedEventArgs e)

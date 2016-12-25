@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -23,11 +24,11 @@ namespace WpfApplication1
 
     public partial class LoginWindow : Window
     {
-        private AppContext _db;
+        private BankDBContext _db;
         public LoginWindow()
         {
             InitializeComponent();
-            _db = new AppContext();
+            _db = new BankDBContext();
         }
 
 

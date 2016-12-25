@@ -73,11 +73,17 @@
     <Compile Include="AccountManagementWindow.xaml.cs">
       <DependentUpon>AccountManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BossMessagesWindow.xaml.cs">
+      <DependentUpon>BossMessagesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CheckClearingWindow.xaml.cs">
       <DependentUpon>CheckClearingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CheckIssuanceWindow.xaml.cs">
       <DependentUpon>CheckIssuanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateLotteryOfCentralBranches.xaml.cs">
+      <DependentUpon>CreateLotteryOfCentralBranches.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreditCardIssueWindow.xaml.cs">
       <DependentUpon>CreditCardIssueWindow.xaml</DependentUpon>
@@ -98,8 +104,20 @@
     <Compile Include="LoanRequestWindow.xaml.cs">
       <DependentUpon>LoanRequestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LotteryDetailWindow.xaml.cs">
+      <DependentUpon>LotteryDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LotteryListView.xaml.cs">
+      <DependentUpon>LotteryListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainBossWindow.xaml.cs">
       <DependentUpon>MainBossWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageStaffHoursWindow.xaml.cs">
+      <DependentUpon>ManageStaffHoursWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="message.xaml.cs">
+      <DependentUpon>message.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Available_Foreign_Currency.cs" />
     <Compile Include="Models\Bank.cs" />
@@ -165,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BossMessagesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CheckClearingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +194,10 @@
     <Page Include="CheckIssuanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateLotteryOfCentralBranches.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="CreditCardIssueWindow.xaml">
       <SubType>Designer</SubType>
@@ -212,6 +238,14 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="LotteryDetailWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LotteryListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainBossWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,6 +253,14 @@
     <Page Include="MainStaffWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageStaffHoursWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="message.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="PresentWorkingHoursWindow.xaml">
       <SubType>Designer</SubType>
