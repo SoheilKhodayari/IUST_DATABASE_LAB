@@ -85,15 +85,33 @@ namespace WpfApplication1
 
             if(!username.Equals("") && !password.Equals("") && !branch_code.Equals(""))
             {
-                string authenticationQuery = @"Select p.PId,p.SSN,p.Name,s.BranchId_FK, s.SystemPassword From Staff as s inner join Person as p on s.SId = p.PId
-                where p.SSN = '{0}' and s.SystemPassword = '{1}' ";
-                authenticationQuery = string.Format(authenticationQuery, username, password);
-                var matchedCredentialRow = _db.Database.SqlQuery<List<string>>(authenticationQuery).FirstOrDefault();
-                if(matchedCredentialRow == null)
-                {
-                    MessageBox.Show("Wrong Credentials");
-                    return;
-                }
+//                string authenticationQuery = @"Select p.PId,p.SSN,p.Name,s.BranchId_FK, s.SystemPassword From Staff as s inner join Person as p on s.SId = p.PId
+//                where p.SSN = '{0}' and s.SystemPassword = '{1}' ";
+//                authenticationQuery = string.Format(authenticationQuery, username, password);
+//                var matchedCredentialRow = _db.Database.SqlQuery<List<string>>(authenticationQuery).FirstOrDefault();
+//                if(matchedCredentialRow == null || matchedCredentialRow.Count() == 0)
+//                {
+//                    MessageBox.Show("Wrong Credentials");
+//                    return;
+//                }
+//                /* Logged In, Fetch Other Properties  */
+//                string otherDataQuery = @"Select ba.BankId,ba.Name,br.Name,br.IsCentral from Branch as br inner join Bank as ba on br.BankId_FK = ba.BankId
+//                where BranchId = {0}";
+//                otherDataQuery = string.Format(otherDataQuery, matchedCredentialRow[3]);
+//                var otherDataRow = _db.Database.SqlQuery<List<string>>(otherDataQuery).FirstOrDefault();
+
+//                if(otherDataQuery == null)
+//                {
+//                    MessageBox.Show("Fatal error detected, Try again!!");
+//                    return;
+//                }
+
+//                var bank_code = otherDataRow[0];
+//                var bank_name = otherDataRow[1];
+//                var branch_name = otherDataRow[2];
+//                var is_central = otherDataRow[3];
+//                var staff_name = matchedCredentialRow[2];
+//                int staffId = Int32.Parse(matchedCredentialRow[0]);
 
                 /* do login from db here */
                 var bank_name = "SADERAT";
@@ -101,8 +119,9 @@ namespace WpfApplication1
                 var staff_name = "ALI NASIRI";
                 int staffId = 45;
                 var bank_code = "bankId";
+                string is_central = "1";
 
-                MainStaffWindow window = new MainStaffWindow(staffId, bank_name,branch_name,bank_code,branch_code,staff_name);
+                MainStaffWindow window = new MainStaffWindow(staffId, bank_name,branch_name,bank_code,branch_code,staff_name,is_central);
                 window.Show();
                 this.Close();
             }
