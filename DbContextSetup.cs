@@ -2,35 +2,48 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
-        public class MigrationsContextFactory : IDbContextFactory<AppContext>
+        public class DbHelper
         {
-            public AppContext Create()
-            {
-                return new AppContext();
-            }
-        }
+            private BankDBContext _ctx;
+            private static DbHelper _dbHelper = new DbHelper();
 
-        public class AppContext : DbContext
-        {
-
-            public AppContext(Boolean DropInitializeDB = false, string ConnectionStringName = "SqlDb")
-                : base(ConnectionStringName)
+            private DbHelper()
             {
-                if (DropInitializeDB)
-                {
-                    Database.SetInitializer(new DropCreateDatabaseAlways<AppContext>());
-                }
+                _ctx = new BankDBContext();
             }
 
-            //public DbSet<Server> Servers { get; set; }
-            //public DbSet<Setting> Settings { get; set; }
+            public static DbHelper getInstance()
+            {       
+                return _dbHelper;
+            }
 
+            public void checkInsurance(string AccountNo)
+            {
+                _ctx.Database.ExecuteSqlCommand(
+                    "insert into \"Check\" values(@aid,@expirationDate,@paperNo)",
+                    new SqlParameter("aid", Int32.Parse(AccountNo)),
+                    new SqlParameter("expirationDate", "2015-09-22"),
+                    new SqlParameter("paperNo", 10)
+                );
+            }
+
+            public void creditCardIssue_AccountCard(string accountNo)
+            {
+                var x = _ctx.Database.SqlQuery<Person>("Select * from person").ToArray();
+            }
+
+            public void creditCardIssue_AccountCard(string balance)
+            {
+
+            }
         }
 
 }

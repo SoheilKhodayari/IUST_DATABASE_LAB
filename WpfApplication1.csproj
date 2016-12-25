@@ -73,23 +73,11 @@
     <Compile Include="AccountManagementWindow.xaml.cs">
       <DependentUpon>AccountManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LotteryDetailWindow.xaml.cs">
-      <DependentUpon>LotteryDetailWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LotteryListView.xaml.cs">
-      <DependentUpon>LotteryListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BossMessagesWindow.xaml.cs">
-      <DependentUpon>BossMessagesWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CheckClearingWindow.xaml.cs">
       <DependentUpon>CheckClearingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CheckIssuanceWindow.xaml.cs">
       <DependentUpon>CheckIssuanceWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CreateLotteryOfCentralBranches.xaml.cs">
-      <DependentUpon>CreateLotteryOfCentralBranches.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreditCardIssueWindow.xaml.cs">
       <DependentUpon>CreditCardIssueWindow.xaml</DependentUpon>
@@ -113,12 +101,47 @@
     <Compile Include="MainBossWindow.xaml.cs">
       <DependentUpon>MainBossWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageStaffHoursWindow.xaml.cs">
-      <DependentUpon>ManageStaffHoursWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="message.xaml.cs">
-      <DependentUpon>message.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Available_Foreign_Currency.cs" />
+    <Compile Include="Models\Bank.cs" />
+    <Compile Include="Models\BankDBContext.cs" />
+    <Compile Include="Models\Boss.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Branch_Phone.cs" />
+    <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\Check_Paper.cs" />
+    <Compile Include="Models\CreditCard.cs" />
+    <Compile Include="Models\CurrentAccount.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DepositAccount.cs" />
+    <Compile Include="Models\ForeignCurrencyAccount.cs" />
+    <Compile Include="Models\Loan.cs" />
+    <Compile Include="Models\Lottery.cs" />
+    <Compile Include="Models\Mapping\Available_Foreign_CurrencyMap.cs" />
+    <Compile Include="Models\Mapping\BankMap.cs" />
+    <Compile Include="Models\Mapping\BossMap.cs" />
+    <Compile Include="Models\Mapping\BranchMap.cs" />
+    <Compile Include="Models\Mapping\Branch_PhoneMap.cs" />
+    <Compile Include="Models\Mapping\CheckMap.cs" />
+    <Compile Include="Models\Mapping\Check_PaperMap.cs" />
+    <Compile Include="Models\Mapping\CreditCardMap.cs" />
+    <Compile Include="Models\Mapping\CurrentAccountMap.cs" />
+    <Compile Include="Models\Mapping\CustomerMap.cs" />
+    <Compile Include="Models\Mapping\DepositAccountMap.cs" />
+    <Compile Include="Models\Mapping\ForeignCurrencyAccountMap.cs" />
+    <Compile Include="Models\Mapping\LoanMap.cs" />
+    <Compile Include="Models\Mapping\LotteryMap.cs" />
+    <Compile Include="Models\Mapping\MessageMap.cs" />
+    <Compile Include="Models\Mapping\PersonMap.cs" />
+    <Compile Include="Models\Mapping\Person_PhoneMap.cs" />
+    <Compile Include="Models\Mapping\SavingAccountMap.cs" />
+    <Compile Include="Models\Mapping\StaffMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Person_Phone.cs" />
+    <Compile Include="Models\SavingAccount.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="PresentWorkingHoursWindow.xaml.cs">
       <DependentUpon>PresentWorkingHoursWindow.xaml</DependentUpon>
     </Compile>
@@ -142,27 +165,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LotteryDetailWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LotteryListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BossMessagesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CheckClearingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CheckIssuanceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CreateLotteryOfCentralBranches.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -210,14 +217,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainStaffWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManageStaffHoursWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="message.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
