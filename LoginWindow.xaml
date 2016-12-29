@@ -72,7 +72,8 @@
             </TabItem>
         </TabControl>
         <Label Content="BANKING SYSTEM LOGIN AREA" Height="35" Margin="235,40,-55,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#FF292272"/>
-        <Label Content="DATE:  12/3/2016&#xD;&#xA;TIME:  13:15" HorizontalAlignment="Left" Height="55" Margin="620,40,-211,0" VerticalAlignment="Top" Width="105"/>
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="605,60,-231,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="605,40,-246,0" VerticalAlignment="Top" Width="155"/>
         <!--Button as a Link button using style-->
         <!--end Button as a Link button using style-->
 

@@ -36,6 +36,9 @@ namespace WpfApplication1
             STAFF_PasswordTxtBox.Password = "JDBNELKS";
             STAFF_UsernameTxtBox.Text = "3255645685";
 
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
+
         }
 
 
