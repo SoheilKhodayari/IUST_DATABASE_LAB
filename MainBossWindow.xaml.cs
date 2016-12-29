@@ -76,7 +76,7 @@ namespace WpfApplication1
         }
         private void go_to_AccountOpeningWindow(object sender, RoutedEventArgs e)
         {
-            AccountOpeningWindow account_window = new AccountOpeningWindow();
+            AccountOpeningWindow account_window = new AccountOpeningWindow(this.branch);
             account_window.Show();
         }
 

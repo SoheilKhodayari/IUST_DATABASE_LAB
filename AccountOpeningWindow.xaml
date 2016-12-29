@@ -38,18 +38,18 @@
                 <TextBlock HorizontalAlignment="Left" Margin="30,226,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top"/>
                 <TextBox Name="NameTxt" HorizontalAlignment="Left" Height="23" Margin="120,60,0,0" TextWrapping="Wrap" Text="Your name" VerticalAlignment="Top" Width="143" />
                 <TextBox Name="SSNTxt" HorizontalAlignment="Left" Height="23" Margin="120,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Social Security Number"/>
-                <TextBox Name="Birthdate" HorizontalAlignment="Left" Height="23" Margin="120,141,0,0" TextWrapping="Wrap" Text="dd-mm-yy" VerticalAlignment="Top" Width="143"/>
-                <TextBox Name="phone" HorizontalAlignment="Left" Height="23" Margin="120,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Home Phone "/>
-                <TextBox Name="mobile" HorizontalAlignment="Left" Height="23" Margin="120,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Mobile Number"/>
-                <TextBox Name="address" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Height="60" Margin="120,225,0,0" VerticalAlignment="Top" Width="143" Text="Your Residence&#xD;&#xA;Address"/>
-                <CheckBox Content="Male" HorizontalAlignment="Left" Margin="120,117,0,0" VerticalAlignment="Top" />
-                <CheckBox Content="Female" HorizontalAlignment="Left" Margin="205,117,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="BirthdateTxt" HorizontalAlignment="Left" Height="23" Margin="120,141,0,0" TextWrapping="Wrap" Text="yyyy-mm-dd" VerticalAlignment="Top" Width="143"/>
+                <TextBox Name="phoneTxt" HorizontalAlignment="Left" Height="23" Margin="120,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Home Phone "/>
+                <TextBox Name="mobileTxt" HorizontalAlignment="Left" Height="23" Margin="120,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Mobile Number"/>
+                <TextBox Name="addressTxt" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Height="60" Margin="120,225,0,0" VerticalAlignment="Top" Width="143" Text="Your Residence&#xD;&#xA;Address"/>
+                <CheckBox Name="MaleCh" Content="Male" HorizontalAlignment="Left" Margin="120,117,0,0" VerticalAlignment="Top" Checked="Male_Checked" />
+                <CheckBox Name="FemaleCh" Content="Female" HorizontalAlignment="Left" Margin="205,117,0,0" VerticalAlignment="Top" Checked="Female_Checked" />
                 <TextBlock HorizontalAlignment="Left" Margin="433,61,0,0" TextWrapping="Wrap" Text="Account Type" VerticalAlignment="Top"/>
-                <TextBlock Name="PrimaryBalanceTxt" HorizontalAlignment="Left" Margin="433,127,0,0" TextWrapping="Wrap" Text="Primary Balance" VerticalAlignment="Top"/>
-                <TextBlock Name="BranchCodeTxt" HorizontalAlignment="Left" Margin="433,93,0,0" TextWrapping="Wrap" Text="Branch Code" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="565,126,0,0" TextWrapping="Wrap" Text="balance " VerticalAlignment="Top" Width="120"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="565,92,0,0" TextWrapping="Wrap" Text="branch code" VerticalAlignment="Top" Width="120"/>
-                <ComboBox Name="AccountTypeCombo" HorizontalAlignment="Left" Margin="565,61,0,0" VerticalAlignment="Top" Width="120">
+                <TextBlock  HorizontalAlignment="Left" Margin="433,127,0,0" TextWrapping="Wrap" Text="Primary Balance" VerticalAlignment="Top"/>
+                <TextBlock  HorizontalAlignment="Left" Margin="433,93,0,0" TextWrapping="Wrap" Text="Branch Code" VerticalAlignment="Top"/>
+                <TextBox Name="PrimaryBalanceTxt" HorizontalAlignment="Left" Height="23" Margin="565,126,0,0" TextWrapping="Wrap" Text="balance " VerticalAlignment="Top" Width="120"/>
+                <TextBox Name="BranchCodeTxt" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="565,92,0,0" TextWrapping="Wrap" Text="branch code" VerticalAlignment="Top" Width="120"/>
+                <ComboBox Name="AccountTypeCombo" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="565,61,0,0" VerticalAlignment="Top" Width="120">
                     <ComboBoxItem Content="Current" HorizontalAlignment="Left" Width="118"/>
                     <ComboBoxItem Content="Deposit" HorizontalAlignment="Left" Width="118"/>
                     <ComboBoxItem Content="ForeignCurrency" HorizontalAlignment="Left" Width="118"/>

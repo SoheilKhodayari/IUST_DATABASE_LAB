@@ -11,6 +11,13 @@ using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
+        public enum ACCOUNT_TYPES
+        {
+            Saving_Account,
+            Current_Account,
+            Deposite_Account,
+            Foreign_Currency_Account
+        };
         public class DbHelper
         {
             private BankDBContext _ctx;
@@ -30,13 +37,6 @@ namespace WpfApplication1
                 return _ctx;
             }
 
-            public enum ACCOUNT_TYPES
-            {
-                Saving_Account,
-                Current_Account,
-                Deposite_Account,
-                Foreign_Currency_Account
-            };
 
             public int openAccount(string name, string ssn, string gender, string birthdate, string phone,
                 string mobile, string address, ACCOUNT_TYPES type, string balance, string branchid)
