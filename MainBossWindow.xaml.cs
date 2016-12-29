@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -30,15 +31,28 @@ namespace WpfApplication1
 
         public int loginId { get; set; } //boss id in tbl
 
-        public MainBossWindow(int loginId, string bank_name, string branch_name, string bank_code, string branch_code, string staff_name)
+        public Person person { get; set;}
+        public Boss boss { get; set; }
+
+        public Branch branch { get; set; }
+
+        public Bank bank { get; set; }
+
+        public MainBossWindow(Boss boss, Branch branch, Bank bank)
         {
             InitializeComponent();
-            this.loginId = loginId;
-            this.staff_name = staff_name;
-            this.branch_name = branch_name;
-            this.branch_code = branch_code;
-            this.bank_name = bank_name;
-            this.bank_code = bank_code;
+
+            this.boss = boss;
+            this.branch = branch;
+            this.bank = bank;
+            this.person = boss.Person;
+
+            this.loginId = this.person.PId; ;
+            this.staff_name = this.person.Name;
+            this.branch_name = this.branch.Name;
+            this.branch_code = this.branch.BranchId.ToString();
+            this.bank_name = this.bank.Name;
+            this.bank_code = this.bank.BankId.ToString();
 
 
             this.TopHeadingStaff.Content = this.bank_name.ToString().ToUpper() + " BANK " + this.branch_name.ToString().ToUpper() + " BRANCH";

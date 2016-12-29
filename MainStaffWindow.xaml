@@ -181,8 +181,8 @@
 
         </Border>
         <Label  Name="TopHeadingStaff" HorizontalAlignment="Left" Height="40" Margin="225,35,0,0" VerticalAlignment="Top" Width="445" Content="SADERAT BANK MARKAZI BRANCH" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
-        <Label  Name="LeftHeadingBranchCode" HorizontalAlignment="Left" Height="25" Margin="605,30,0,0" VerticalAlignment="Top" Width="170" FontSize="14" FontStyle="Italic" Content="Branch Code: 26323223"/>
-        <Label  x:Name="LeftHeadingStaffName" HorizontalAlignment="Left" Height="30" Margin="605,50,0,0" VerticalAlignment="Top" Width="185" FontSize="14" FontStyle="Italic" Content="Login:  Ali Nasiri"/>
+        <Label  Name="LeftHeadingBranchCode" HorizontalAlignment="Left" Height="25" Margin="646,30,0,0" VerticalAlignment="Top" Width="170" FontSize="14" FontStyle="Italic" Content="Branch Code: 26323223"/>
+        <Label  x:Name="LeftHeadingStaffName" HorizontalAlignment="Left" Height="30" Margin="646,50,-5,0" VerticalAlignment="Top" Width="185" FontSize="14" FontStyle="Italic" Content="Login:  Ali Nasiri"/>
         <Label  x:Name="RightHeadingArea" HorizontalAlignment="Left" Height="30" Margin="75,45,0,0" VerticalAlignment="Top" Width="120" FontSize="14" FontStyle="Italic" Content="Area: Staff Panel"/>
         <Label  x:Name="RightHeadingAreaImage" HorizontalAlignment="Left" Height="30" Margin="50,45,0,0" VerticalAlignment="Top" Width="35"  Content="{StaticResource Person }" RenderTransformOrigin="-0.857,-0.833"/>
         <Label  x:Name="Account" HorizontalAlignment="Left" Height="40" Margin="75,135,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Account }" RenderTransformOrigin="-0.857,-0.833"/>

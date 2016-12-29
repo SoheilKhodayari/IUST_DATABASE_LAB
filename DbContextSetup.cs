@@ -25,6 +25,10 @@ namespace WpfApplication1
             {       
                 return _dbHelper;
             }
+            public BankDBContext getDbContext()
+            {
+                return _ctx;
+            }
 
             public enum ACCOUNT_TYPES
             {
@@ -498,6 +502,7 @@ namespace WpfApplication1
             public Staff getStaffBySSN(string ssn)
             {
                 Person p = getPersonBySSN(ssn);
+                if (p == null) return null;
                 Staff staff = _ctx.Database.SqlQuery<Staff>("Select * from Staff where sid=@sid",
                                                         new SqlParameter("sid", p.PId)).FirstOrDefault();
 
@@ -507,6 +512,7 @@ namespace WpfApplication1
             public Boss getBossBySSN(string ssn)
             {
                 Person p = getPersonBySSN(ssn);
+                if (p == null) return null;
                 Boss boss = _ctx.Database.SqlQuery<Boss>("Select * from Boss where bid=@bid",
                                                         new SqlParameter("bid", p.PId)).FirstOrDefault();
                 return boss;
@@ -521,6 +527,7 @@ namespace WpfApplication1
             public Staff getStaffById(string id)
             {
                 Person p = getPersonById(id);
+                if (p == null) return null;
                 Staff staff = _ctx.Database.SqlQuery<Staff>("Select * from Staff where sid=@sid",
                                                         new SqlParameter("sid", p.PId)).FirstOrDefault();
 
@@ -530,6 +537,7 @@ namespace WpfApplication1
             public Boss getBossById(string id)
             {
                 Person p = getPersonById(id);
+                if (p == null) return null;
                 Boss boss = _ctx.Database.SqlQuery<Boss>("Select * from Boss where bid=@bid",
                                                         new SqlParameter("bid", p.PId)).FirstOrDefault();
                 return boss;

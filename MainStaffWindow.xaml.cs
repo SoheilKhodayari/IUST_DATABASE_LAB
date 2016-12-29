@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -31,20 +32,37 @@ namespace WpfApplication1
 
         public string is_central { get; set; }
 
-        public MainStaffWindow(int loginId,string bank_name, string branch_name, string bank_code,string branch_code, string staff_name, string is_central)
+        public Staff staff { get; set; }
+
+        public Person person { get; set; }
+
+        public Branch branch { get; set; }
+
+        public Bank bank { get; set; }
+
+        public MainStaffWindow(Staff staff, Branch branch, Bank bank)
         {
             InitializeComponent();
-            this.loginId = loginId;
-            this.staff_name = staff_name;
-            this.branch_name = branch_name;
-            this.branch_code = branch_code;
-            this.bank_name = bank_name;
-            this.bank_code = bank_code;
-            this.is_central = is_central;
+            this.staff = staff;
+            this.person = staff.Person;
+            this.branch = branch;
+            this.bank = bank;
 
-
+            this.loginId = staff.SId;
+            this.staff_name = this.person.Name;
+            this.branch_name = this.branch.Name;
+            this.branch_code = this.branch.BranchId.ToString();
+            this.bank_name = this.bank.Name;
+            this.bank_code = this.bank.BankId.ToString();
+            if (this.branch.IsCentral)
+            {
+                this.is_central = "1";
+            }else
+            {
+                this.is_central = "0";
+            }
+                
             this.TopHeadingStaff.Content = this.bank_name.ToString().ToUpper() + " BANK " + this.branch_name.ToString().ToUpper() + " BRANCH";
-            
             this.LeftHeadingBranchCode.Content = "Branch Code: " + this.branch_code;
             this.LeftHeadingStaffName.Content =  "Login: " + this.staff_name;
             

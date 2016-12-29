@@ -163,6 +163,7 @@
     <Compile Include="PresentWorkingHoursWindow.xaml.cs">
       <DependentUpon>PresentWorkingHoursWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validator.cs" />
     <Compile Include="WatermarkService.cs" />
     <Compile Include="WatermarkAorner.cs" />
     <Compile Include="WithdrawelInputDialog.xaml.cs">
