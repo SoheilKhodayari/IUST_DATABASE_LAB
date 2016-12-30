@@ -658,8 +658,9 @@ namespace WpfApplication1
                 return success;
             }
 
-            public void addRandomWinnersToLottery(string lotId, int count=3)
+            public List<string> addRandomWinnersToLottery(string lotId, int count=3)
             {
+                List<string> result = new List<string>();
                 Lottery lot = getLottery(lotId);
 
                 List<int> participates = _ctx.Database.SqlQuery<int>(
@@ -679,7 +680,9 @@ namespace WpfApplication1
                 foreach (var accNo in winners)
                 {
                     addWinner(lotId, accNo.ToString());
+                    result.Add(accNo.ToString());
                 }
+                return result;
             }
 
         }

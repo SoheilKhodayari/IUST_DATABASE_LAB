@@ -32,40 +32,50 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Image x:Key="Logo" Source="Icons/Account.png"/>
+        <Image x:Key="Hold" Source="Icons/Deposit.png"/>
     </Window.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
             <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="28*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="0*"/>
                 </Grid.RowDefinitions>
 
-                <Separator HorizontalAlignment="Left" Height="20" Margin="30,35,0,0" VerticalAlignment="Top" Width="265"/>
+                <Separator HorizontalAlignment="Left" Height="15" Margin="30,40,0,0" VerticalAlignment="Top" Width="265"/>
                 <Label Content="Details" HorizontalAlignment="Left" Height="30" Margin="80,10,0,0" VerticalAlignment="Top" Width="85" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <TextBlock HorizontalAlignment="Left" Margin="31,55,0,0" TextWrapping="Wrap" Text="LotteryId" VerticalAlignment="Top" RenderTransformOrigin="0.528,1.312"/>
                 <TextBlock HorizontalAlignment="Left" Margin="31,84,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top"/>
                 <TextBlock HorizontalAlignment="Left" Margin="30,116,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top"/>
                 <TextBox IsReadOnly ="True" Name="LotteryId" HorizontalAlignment="Left" Height="23" Margin="112,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Text=""/>
                 <TextBox IsReadOnly ="True" Name="LotteryDate" HorizontalAlignment="Left" Height="23" Margin="112,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Text="DD-MM-YYYY"/>
-                <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="560,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-                <Button Name="DoLotteryButton" Style="{StaticResource LinkButton}" Content="confirm" Margin="545,60,95,270" Click="btn_do_lottery_clicked" />
-                <Label Content="Hold the Lottery" HorizontalAlignment="Left" Height="30" Margin="480,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
-                <Separator HorizontalAlignment="Left" Height="20" Margin="400,40,0,0" VerticalAlignment="Top" Width="285"/>
-                <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="405,60,0,0" TextWrapping="Wrap" Text="Do the lottery:" VerticalAlignment="Top" Width="95"/>
+                <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="125,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Grid.Column="2"/>
+                <Button Name="DoLotteryButton" Style="{StaticResource LinkButton}" Content="confirm" Margin="110,60,95,270" Click="btn_do_lottery_clicked" Grid.Column="2" />
+                <Label Content="Hold the Lottery" HorizontalAlignment="Left" Height="30" Margin="50,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16" Grid.Column="2"/>
+                <Separator HorizontalAlignment="Left" Height="20" Margin="400,40,0,0" VerticalAlignment="Top" Width="285" Grid.ColumnSpan="3"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="405,60,0,0" TextWrapping="Wrap" Text="Do the lottery:" VerticalAlignment="Top" Width="95" Grid.ColumnSpan="3"/>
                 <Separator HorizontalAlignment="Left" Height="15" Margin="30,257,0,0" VerticalAlignment="Top" Width="265"/>
                 <TextBox IsReadOnly ="True" x:Name="LotteryTitle" HorizontalAlignment="Left" Height="23" Margin="112,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Text=""/>
                 <TextBlock HorizontalAlignment="Left" Margin="31,194,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" RenderTransformOrigin="0.045,0.251"/>
                 <TextBox IsReadOnly ="True" x:Name="LotteryDesc" HorizontalAlignment="Left" Height="94" Margin="30,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" Text=""/>
                 <TextBlock HorizontalAlignment="Left" Margin="30,155,0,0" TextWrapping="Wrap" Text="Number of Winners:" VerticalAlignment="Top"/>
                 <TextBox IsReadOnly ="True" x:Name="LotteryWinnersCount" HorizontalAlignment="Left" Height="23" Margin="145,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Text=""/>
-                <TextBox IsReadOnly ="True" x:Name="LotteryWinnersInfo" HorizontalAlignment="Left" Height="183" Margin="400,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285" Text=""/>
-                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="405,100,0,0" TextWrapping="Wrap" Text="Winners Info:" VerticalAlignment="Top" Width="95"/>
+                <TextBox IsReadOnly ="True" x:Name="LotteryWinnersInfo" HorizontalAlignment="Left" Height="183" Margin="400,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285" Text="" Grid.ColumnSpan="3"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="405,100,0,0" TextWrapping="Wrap" Text="Winners Info:" VerticalAlignment="Top" Width="95" Grid.ColumnSpan="3"/>
             </Grid>
 
         </Border>
-        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="275,35,396,0" VerticalAlignment="Top" Width="155" Content="Lottery Details" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
-
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="320,35,351,0" VerticalAlignment="Top" Width="155" Content="Lottery Details" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="84,44,0,0" VerticalAlignment="Top" Width="141"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="84,19,0,0" VerticalAlignment="Top" Width="171"/>
+        <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="95,95,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
+        <Label  x:Name="Holdd" HorizontalAlignment="Left" Height="40" Margin="510,95,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Hold }" RenderTransformOrigin="-0.857,-0.833"/>
 
     </Grid>
 </Window>

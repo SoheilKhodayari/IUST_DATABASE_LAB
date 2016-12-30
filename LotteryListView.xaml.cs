@@ -65,7 +65,7 @@ namespace WpfApplication1
             string[] tokens = lottery.Description.Split(new[] { "_" }, StringSplitOptions.None);
             string[] noWinners = tokens[0].Split(':');
             string desc = tokens[0];
-            if (noWinners.Count() <1)
+            if (noWinners.Count() >1)
             {
                 return new List<string>(new string[] { lottery.LotteryId.ToString(),
                                                   lottery.Name,
@@ -79,7 +79,7 @@ namespace WpfApplication1
                                                   lottery.Name,
                                                   date.ToString("yyyy-MM-dd"),
                                                   lottery.Description, // description
-                                                  "5" }); // no of winners ,default
+                                                  "1" }); // no of winners ,default
             }
         }
         public LotteryListView(string branch_code, string bank_code)
@@ -87,6 +87,9 @@ namespace WpfApplication1
             InitializeComponent();
             this.bank_code = bank_code;
             this.branch_code = branch_code;
+
+            var helper = DbHelper.getInstance();
+            var db = helper.getDbContext();
 
             BranchIdHeading.Content = "BRANCH ID: " + this.branch_code;
             DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
@@ -111,11 +114,12 @@ namespace WpfApplication1
                 {
                     List<string> item = this.findAllLotteryInfo(lotteryItem[0]);
                     string _id = item[0];
+                    Lottery lot = db.Lotteries.Where(x => x.LotteryId.ToString() == _id).FirstOrDefault();
                     string _title = item[1];
                     string _date = item[2];
                     string _desc = item[3];
                     string _noWinner = item[4];
-                    var w = new LotteryDetailWindow(_id,_date,_title,_noWinner,_desc,this.branch_code,this.bank_code);
+                    var w = new LotteryDetailWindow(_id,_date,_title,_noWinner,_desc,this.branch_code,this.bank_code,lot);
                     w.Show();
                 };
 
