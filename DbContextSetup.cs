@@ -195,6 +195,7 @@ namespace WpfApplication1
 
                 _ctx.Database.ExecuteSqlCommand(
                         "update Person set address=@address where pid=@cid",
+                        new SqlParameter("address", address),
                         new SqlParameter("cid", Cid)
                     );
 
@@ -214,7 +215,7 @@ namespace WpfApplication1
                         new SqlParameter("cid", Cid),
                         new SqlParameter("mobile", mobile)
                     );
-
+                _ctx.SaveChanges();
                 return Cid;
             }
 
@@ -223,21 +224,21 @@ namespace WpfApplication1
                 if (type == ACCOUNT_TYPES.Saving_Account) 
                 {
                     _ctx.Database.ExecuteSqlCommand(
-                        "DELETE FROM SavingAccount WHERE AId=@accNo",
+                        "DELETE FROM SavingAccount WHERE AId=@accNo;commit;",
                         new SqlParameter("accNo", accNo)
                     );
                 }
                 else if (type == ACCOUNT_TYPES.Deposite_Account)
                 {
                     _ctx.Database.ExecuteSqlCommand(
-                        "DELETE FROM DepositAccount WHERE AId=@accNo",
+                        "DELETE FROM DepositAccount WHERE AId=@accNo;commit;",
                         new SqlParameter("accNo", accNo)
                     );
                 }
                 else if (type == ACCOUNT_TYPES.Current_Account)
                 {
                     _ctx.Database.ExecuteSqlCommand(
-                        "DELETE FROM CurrentAccount WHERE AId=@accNo",
+                        "DELETE FROM CurrentAccount WHERE AId=@accNo;commit;",
                         new SqlParameter("accNo", accNo)
                     );
                 }

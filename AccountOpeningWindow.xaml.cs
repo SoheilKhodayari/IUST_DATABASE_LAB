@@ -124,7 +124,7 @@ namespace WpfApplication1
                 MessageBox.Show("Operation unsuccessfull, Check Entries!!");
             }else
             {
-                MessageBox.Show("Operation successful");
+                MessageBox.Show(string.Format("Operation successful: Account Id = {0}",result));
                 this.Close();
             }
 

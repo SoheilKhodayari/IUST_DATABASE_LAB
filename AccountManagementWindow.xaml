@@ -56,12 +56,8 @@
                 <TextBox Name="address" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Height="60" Margin="112,116,0,0" VerticalAlignment="Top" Width="143" Text="Residence&#xA;Address"/>
                 <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="560,97,0,0" TextWrapping="Wrap" Text="1000000 Rials" VerticalAlignment="Top" Width="125" Height="13"/>
                 <TextBlock Name="PrimaryBalanceTxt" HorizontalAlignment="Left" Margin="445,94,0,0" TextWrapping="Wrap" Text="Current Balance:" VerticalAlignment="Top" Width="95"/>
-                <Label Content="Account Blocking" HorizontalAlignment="Left" Height="30" Margin="480,222,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="445,185,0,0" TextWrapping="Wrap" Text="Close Account:" VerticalAlignment="Top"/>
                 <Button Style="{StaticResource LinkButton}" Content="confirm close" Margin="550,184,10,121" Click="close_account_confirm" />
-                <Separator HorizontalAlignment="Left" Height="15" Margin="420,257,0,0" VerticalAlignment="Top" Width="265"/>
-                <TextBlock x:Name="PrimaryBalanceTxt_Copy1" HorizontalAlignment="Left" Margin="445,277,0,0" TextWrapping="Wrap" Text="Block Account:" VerticalAlignment="Top"/>
-                <Button Style="{StaticResource LinkButton}" Content="confirm block" Margin="550,277,10,28" Click="block_account_confirm" />
                 <Label Content="Account Balance" HorizontalAlignment="Left" Height="30" Margin="480,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="15" Margin="420,40,0,0" VerticalAlignment="Top" Width="265"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="445,60,0,0" TextWrapping="Wrap" Text="Current Type:" VerticalAlignment="Top" Width="95"/>

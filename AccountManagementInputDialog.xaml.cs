@@ -83,7 +83,7 @@ namespace WpfApplication1
             if( sa == null && ca == null && da == null && fca == null)
             {
                 account_exists = false;
-                MessageBox.Show("Error Message: Invalid Account Number");
+                MessageBox.Show("Error Message: Account Number does not exists");
                 return;
             }
 
@@ -95,6 +95,12 @@ namespace WpfApplication1
                      AccountBranchCode = sa.BranchId_FK.ToString();
                      AccountBalance = sa.Remainder.ToString();
                      AccountOpeningDate = sa.OpeningDate.ToString();
+                     SavingAccount acc = ctx.SavingAccounts.Where(s => s.AId == sa.AId).FirstOrDefault();
+                    if(acc== null)
+                    {
+                        MessageBox.Show("Error Message: Account Number does not exists");
+                        return;
+                    }
                 }
                 else if (account_type == ACCOUNT_TYPES.Deposite_Account)
                 {
@@ -102,6 +108,12 @@ namespace WpfApplication1
                      AccountBranchCode = da.BranchId_FK.ToString();
                      AccountBalance = da.Remainder.ToString();
                      AccountOpeningDate = da.OpeningDate.ToString();
+                     DepositAccount acc = ctx.DepositAccounts.Where(s => s.AId == da.AId).FirstOrDefault();
+                     if (acc == null)
+                     {
+                         MessageBox.Show("Error Message: Account Number does not exists");
+                         return;
+                     }
                 }
                 else if (account_type == ACCOUNT_TYPES.Foreign_Currency_Account)
                 {
@@ -109,6 +121,12 @@ namespace WpfApplication1
                      AccountBranchCode = fca.BranchId_FK.ToString();
                      AccountBalance = fca.Remainder.ToString();
                      AccountOpeningDate = fca.OpeningDate.ToString();
+                     ForeignCurrencyAccount acc = ctx.ForeignCurrencyAccounts.Where(s => s.AId == fca.AId).FirstOrDefault();
+                     if (acc == null)
+                     {
+                         MessageBox.Show("Error Message: Account Number does not exists");
+                         return;
+                     }
                 }
                 else // if (type == ACCOUNT_TYPES.Current_Account)
                 {
@@ -116,6 +134,12 @@ namespace WpfApplication1
                      AccountBranchCode = ca.BranchId_FK.ToString();
                      AccountBalance = ca.Remainder.ToString();
                      AccountOpeningDate = ca.OpeningDate.ToString();
+                     CurrentAccount acc = ctx.CurrentAccounts.Where(s => s.AId == ca.AId).FirstOrDefault();
+                     if (acc == null)
+                     {
+                         MessageBox.Show("Error Message: Account Number does not exists");
+                         return;
+                     }
                 }
 
 
