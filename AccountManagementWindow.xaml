@@ -54,7 +54,7 @@
                 <TextBox Name="phone" HorizontalAlignment="Left" Height="23" Margin="112,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Home Phone "/>
                 <TextBox Name="mobile" HorizontalAlignment="Left" Height="23" Margin="112,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Text="Mobile Number"/>
                 <TextBox Name="address" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Height="60" Margin="112,116,0,0" VerticalAlignment="Top" Width="143" Text="Residence&#xA;Address"/>
-                <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="560,97,0,0" TextWrapping="Wrap" Text="1000000 Rials" VerticalAlignment="Top" Width="90"/>
+                <TextBlock Name="AccountBalance" HorizontalAlignment="Left" Margin="560,97,0,0" TextWrapping="Wrap" Text="1000000 Rials" VerticalAlignment="Top" Width="125" Height="13"/>
                 <TextBlock Name="PrimaryBalanceTxt" HorizontalAlignment="Left" Margin="445,94,0,0" TextWrapping="Wrap" Text="Current Balance:" VerticalAlignment="Top" Width="95"/>
                 <Label Content="Account Blocking" HorizontalAlignment="Left" Height="30" Margin="480,222,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy" HorizontalAlignment="Left" Margin="445,185,0,0" TextWrapping="Wrap" Text="Close Account:" VerticalAlignment="Top"/>
@@ -65,19 +65,21 @@
                 <Label Content="Account Balance" HorizontalAlignment="Left" Height="30" Margin="480,10,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="15" Margin="420,40,0,0" VerticalAlignment="Top" Width="265"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy2" HorizontalAlignment="Left" Margin="445,60,0,0" TextWrapping="Wrap" Text="Current Type:" VerticalAlignment="Top" Width="95"/>
-                <TextBlock Name="AccountType" HorizontalAlignment="Left" Margin="560,60,0,0" TextWrapping="Wrap" Text="Saving Account" VerticalAlignment="Top" Width="90"/>
+                <TextBlock Name="AccountType" HorizontalAlignment="Left" Margin="560,60,0,0" TextWrapping="Wrap" Text="Saving Account" VerticalAlignment="Top" Width="135"/>
                 <Label Content="Account Details" HorizontalAlignment="Left" Height="30" Margin="90,230,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <Separator HorizontalAlignment="Left" Height="15" Margin="30,257,0,0" VerticalAlignment="Top" Width="265"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy3" HorizontalAlignment="Left" Margin="55,277,0,0" TextWrapping="Wrap" Text="Branch Code:" VerticalAlignment="Top" Width="95"/>
                 <TextBlock Name="AccountBranchCode" HorizontalAlignment="Left" Margin="165,277,0,0" TextWrapping="Wrap" Text="512151" VerticalAlignment="Top" Width="90"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy4" HorizontalAlignment="Left" Margin="55,306,0,0" TextWrapping="Wrap" Text="Opening Date" VerticalAlignment="Top" Width="95"/>
-                <TextBlock Name="AccountOpeningDate" HorizontalAlignment="Left" Margin="165,309,0,0" TextWrapping="Wrap" Text="25-09-1996" VerticalAlignment="Top" Width="90"/>
+                <TextBlock Name="AccountOpeningDate" HorizontalAlignment="Left" Margin="165,306,0,0" TextWrapping="Wrap" Text="25-09-1996" VerticalAlignment="Top" Width="130" Height="34"/>
             </Grid>
 
         </Border>
-        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="275,35,316,0" VerticalAlignment="Top" Width="235" Content="Account Management" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
-        <Label  Name="LeftHeadingAccount" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" Content="AccountId: 547" FontWeight="Bold" FontSize="16" Foreground="#FF000000" FontStyle="Italic" Margin="605,39,21,0" />
-
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="275,17,316,0" VerticalAlignment="Top" Width="235" Content="Account Management" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+        <Label  Name="LeftHeadingAccount" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="200" Content="AccountId: 547" Foreground="#FF000000" Margin="605,43,21,0" />
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="50,43,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="50,17,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label  x:Name="BankLabel" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="211" Content="BANK: NAME" Foreground="#FF000000" Margin="605,17,10,0" />
 
     </Grid>
 </Window>

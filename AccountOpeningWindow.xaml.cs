@@ -38,7 +38,15 @@ namespace WpfApplication1
 
         private void reset_form_click(object sender, RoutedEventArgs e)
         {
-           
+            NameTxt.Clear();
+            SSNTxt.Clear();
+            BirthdateTxt.Text = "yyyy-mm-dd";
+            MaleCh.IsChecked = false;
+            FemaleCh.IsChecked = false;
+            phoneTxt.Clear();
+            mobileTxt.Clear();
+            addressTxt.Clear();
+            PrimaryBalanceTxt.Clear();
         }
 
         private void submit_form_click(object sender, RoutedEventArgs e)

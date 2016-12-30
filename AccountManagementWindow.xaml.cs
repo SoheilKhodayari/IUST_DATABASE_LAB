@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -43,18 +44,142 @@ namespace WpfApplication1
             get { return AccountBranchCode.Text; }
             set { AccountBranchCode.Text = value; }
         }
+        public string _Phone
+        {
+            get { return phone.Text; }
+            set { phone.Text = value; }
+        }
+        public string _Mobile
+        {
+            get { return mobile.Text; }
+            set { mobile.Text = value; }
+        }
+        public string _Address
+        {
+            get { return address.Text; }
+            set { address.Text = value; }
+        }
 
+        public string PureBalance { get; set; }
+
+        public Person person;
         public AccountManagementWindow(string accountId,string _AccountType, string _AccountBranchCode, string _AccountOpeningDate, string _AccountBalance)
         {
 
             InitializeComponent();
 
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
             this._accountId = accountId;
             this._AccountType = _AccountType;
             this._AccountBranchCode = _AccountBranchCode;
             this._AccountOpeningDate = _AccountOpeningDate;
-            this._AccountBalance = _AccountBalance;
-            this.LeftHeadingAccount.Content = "AccountId: " + this._accountId;
+            this.LeftHeadingAccount.Content = "ACCOUNT NUMBER: " + this._accountId;
+            DbHelper helper = DbHelper.getInstance();
+            BankDBContext ctx = helper.getDbContext();
+
+            if (_AccountType == "Saving Account")
+            {
+                this._AccountBalance = _AccountBalance + " Rials";
+                SavingAccount account = ctx.SavingAccounts.Find(Int32.Parse(accountId));
+                BankLabel.Content = "BANK NAME: " + account.Branch.Bank.Name;
+                this.person = account.Customer.Person;
+                _Address = this.person.Address;
+                List<Person_Phone> phones = ctx.Person_Phone.Where(p => p.PId_FK == this.person.PId).ToList();
+                foreach(var record in phones)
+                {
+                    if(record.Phone.StartsWith("09"))
+                    {
+                        _Mobile = record.Phone;
+                    }
+                    else
+                    {
+                        _Phone = record.Phone;
+                    }
+                    if(Validator.validatePhone(_Phone) && Validator.validatePhone(_Mobile))
+                    {
+                        break;
+                    }
+                }
+
+            }
+            else if (_AccountType == "Deposit Account")
+            {
+                this._AccountBalance = _AccountBalance + " Rials";
+                DepositAccount account = ctx.DepositAccounts.Find(Int32.Parse(accountId));
+                BankLabel.Content = "BANK NAME: " + account.Branch.Bank.Name;
+                this.person = account.Customer.Person;
+                _Address = this.person.Address;
+                List<Person_Phone> phones = ctx.Person_Phone.Where(p => p.PId_FK == this.person.PId).ToList();
+                foreach (var record in phones)
+                {
+                    if (record.Phone.StartsWith("09"))
+                    {
+                        _Mobile = record.Phone;
+                    }
+                    else
+                    {
+                        _Phone = record.Phone;
+                    }
+                    if (Validator.validatePhone(_Phone) && Validator.validatePhone(_Mobile))
+                    {
+                        break;
+                    }
+                }
+
+            }
+            else if (_AccountType == "Foreign Currency Account")
+            {
+                this._AccountBalance = _AccountBalance + " Dollars";
+                ForeignCurrencyAccount account = ctx.ForeignCurrencyAccounts.Find(Int32.Parse(accountId));
+                BankLabel.Content = "BANK NAME: " + account.Branch.Bank.Name;
+                this.person = account.Customer.Person;
+                _Address = this.person.Address;
+                List<Person_Phone> phones = ctx.Person_Phone.Where(p => p.PId_FK == this.person.PId).ToList();
+                foreach (var record in phones)
+                {
+                    if (record.Phone.StartsWith("09"))
+                    {
+                        _Mobile = record.Phone;
+                    }
+                    else
+                    {
+                        _Phone = record.Phone;
+                    }
+                    if (Validator.validatePhone(_Phone) && Validator.validatePhone(_Mobile))
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                this._AccountBalance = _AccountBalance + " Rials";
+                CurrentAccount account = ctx.CurrentAccounts.Find(Int32.Parse(accountId));
+                BankLabel.Content = "BANK NAME: " + account.Branch.Bank.Name;
+                this.person = account.Customer.Person;
+                _Address = this.person.Address;
+                List<Person_Phone> phones = ctx.Person_Phone.Where(p => p.PId_FK == this.person.PId).ToList();
+                foreach (var record in phones)
+                {
+                    if (record.Phone.StartsWith("09"))
+                    {
+                        _Mobile = record.Phone;
+                    }
+                    else
+                    {
+                        _Phone = record.Phone;
+                    }
+                    if (Validator.validatePhone(_Phone) && Validator.validatePhone(_Mobile))
+                    {
+                        break;
+                    }
+                }
+            }
+
+            //BankLabel.Content = 
+
+
         }
 
         private void Close_Window(object sender, RoutedEventArgs e)
