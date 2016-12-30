@@ -49,27 +49,6 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="SYSTEM ADMIN" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="97" Margin="-2,-2,-40,0">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="19*"/>
-                        <ColumnDefinition Width="194*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Reset" HorizontalAlignment="Left" Margin="90,210,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-                    <Button Content="Submit" HorizontalAlignment="Left" Margin="185,210,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,87,0,0" TextWrapping="Wrap" Text="Username:" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
-                    <TextBox  Name="Admin_UsernameTxtBox" HorizontalAlignment="Left" Height="23" Margin="140,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
-                    <PasswordBox  Name="Admin_PasswordTxtBox" HorizontalAlignment="Left" Height="25" Margin="140,144,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,144,0,0" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.377,-2.812"/>
-                    <GridSplitter HorizontalAlignment="Left" Height="5" Margin="47,60,0,0" VerticalAlignment="Top" Width="295" Grid.ColumnSpan="2"/>
-                    <GridSplitter HorizontalAlignment="Left" Height="250" Margin="315,30,0,0" VerticalAlignment="Top" Width="5" Grid.Column="1"/>
-                    <GridSplitter HorizontalAlignment="Left" Height="5" Margin="350,60,0,0" VerticalAlignment="Top" Width="205" Grid.Column="1"/>
-                    <Label Content="ADMIN LOGIN FROM" HorizontalAlignment="Left" Height="25" Margin="70,30,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="1.333,0.4" FontWeight="Bold" FontSize="14" Foreground="Black" Background="#00000000" Grid.Column="1"/>
-                    <Label Content="HELPS AND NOTES" HorizontalAlignment="Left" Height="30" Margin="395,30,0,0" VerticalAlignment="Top" Width="135" FontSize="14" FontWeight="Bold" RenderTransformOrigin="-0.222,0.5" Foreground="Black" Grid.Column="1"/>
-                    <Label Content="(1)    This is the system admin login &#xD;&#xA;        panel&#xD;&#xA;" HorizontalAlignment="Left" Height="49" Margin="350,82,0,0" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-                    <Label Content="(2)    There's only one token generated&#xD;&#xA;        and enabled to enter this area&#xD;&#xA;        &#xA;" HorizontalAlignment="Left" Height="49" Margin="350,151,0,0" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-                </Grid>
-            </TabItem>
         </TabControl>
         <Label Content="BANKING SYSTEM LOGIN AREA" Height="35" Margin="235,40,-55,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="#FF292272"/>
         <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="605,60,-231,0" VerticalAlignment="Top" Width="140"/>
