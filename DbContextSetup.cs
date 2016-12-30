@@ -355,9 +355,10 @@ namespace WpfApplication1
                 return ratioes;
             }
             
-            public int checkInsurance(string accNo)
+            public List<string> checkIssuance(string accNo)
             {
                 int id = -1;
+                List<string> r = new List<string>();
                 if (getCheckOfAccount(accNo) == null)
                 {
                     DateTime dt = DateTime.Now;
@@ -366,11 +367,16 @@ namespace WpfApplication1
                         "insert into \"Check\" values(@aid,@expirationDate,@paperNo);select @@IDENTITY;",
                         new SqlParameter("aid", Int32.Parse(accNo)),
                         new SqlParameter("expirationDate", date),
-                        new SqlParameter("PaperNumber", 10)).Single()
+                        new SqlParameter("paperNo", 10)).Single()
                     );
+                    r.Add(accNo);
+                    r.Add(getCheckOfAccount(accNo).CheckId.ToString());
+                    r.Add(date);
+                    r.Add("10");
                 }
 
-                return id;
+
+                return r;
             }
 
             public Check getCheckOfAccount(string accNo)
