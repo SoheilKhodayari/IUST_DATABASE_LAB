@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -30,16 +31,27 @@ namespace WpfApplication1
         {
             List<List<string>> messages = new List<List<string>>();
 
-            List<string> msgItem1 = new List<string>( new string [] {"1" , "Interest Notice" ,"01-05-2015", "Content1"});
-            List<string> msgItem2 = new List<string>(new string[] { "2", "Emails Notice", "7-09-2016", "Content2" });
-            List<string> msgItem3 = new List<string>(new string[] { "3", "New Notice", "7-09-2016", "Content3" });
-            List<string> msgItem4 = new List<string>(new string[] { "4", "New Notice", "7-09-2016", "Content4" });
+            //List<string> msgItem1 = new List<string>( new string [] {"1" , "Interest Notice" ,"01-05-2015", "Content1"});
+            //List<string> msgItem2 = new List<string>(new string[] { "2", "Emails Notice", "7-09-2016", "Content2" });
+            //List<string> msgItem3 = new List<string>(new string[] { "3", "New Notice", "7-09-2016", "Content3" });
+            //List<string> msgItem4 = new List<string>(new string[] { "4", "New Notice", "7-09-2016", "Content4" });
 
-            messages.Add(msgItem1);
-            messages.Add(msgItem2);
-            messages.Add(msgItem3);
-            messages.Add(msgItem4);
-
+            //messages.Add(msgItem1);
+            //messages.Add(msgItem2);
+            //messages.Add(msgItem3);
+            //messages.Add(msgItem4);
+            List<Message> mList = SqlWrapper.getInstance().getDbContext().Messages.Where(x => x.BId_FK == bossId).ToList();
+            List<string> stringObjWrapper;
+            foreach(var msg in mList)
+            {
+                stringObjWrapper = new List<string>();
+                stringObjWrapper.Add(msg.MsgId.ToString());
+                stringObjWrapper.Add(msg.Title);
+                DateTime date = (DateTime)msg.Date;
+                stringObjWrapper.Add(date.ToString("yyyy-MM-dd"));
+                stringObjWrapper.Add(msg.Content.ToString());
+                messages.Add(stringObjWrapper);
+            }
             return messages;
         }
 

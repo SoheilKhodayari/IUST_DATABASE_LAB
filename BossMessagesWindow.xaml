@@ -4,6 +4,36 @@
         Title="BossMessagesWindow" Height="517" Width="834"
         WindowStartupLocation="CenterScreen"
         Icon="/Icons/Exchange.png">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Image x:Key="Logo" Source="Icons/LoanRequest.png"/>
+    </Window.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="30,80,0,0" VerticalAlignment="Top" Width="315">
             <Grid HorizontalAlignment="Left" Height="350" Margin="23,8,-417,0" VerticalAlignment="Top" Width="705">
@@ -16,6 +46,9 @@
             </Grid>
 
         </Border>
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="555,45,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="661,45,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="240,40,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
         <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="285,40,351,0" VerticalAlignment="Top" Width="190" Content="Messages Window" FontWeight="Bold" FontSize="20" Foreground="#FF292272" RenderTransformOrigin="0.4,0.125" />
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="345,80,0,0" VerticalAlignment="Top" Width="455">
             <Grid Name="CurrentMsgGrid" HorizontalAlignment="Left" Height="315" Margin="18,43,0,0" VerticalAlignment="Top" Width="425" Panel.ZIndex="5" >
