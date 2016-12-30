@@ -3,6 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AccountOpeningWindow" Height="517" Width="834"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style
+    x:Key="LinkButton"
+    TargetType="Button">
+            <Setter
+        Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                TargetType="Button">
+                        <TextBlock
+                    TextDecorations="Underline">
+                <ContentPresenter /></TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+        Property="Foreground"
+        Value="Blue" />
+            <Style.Triggers>
+                <Trigger
+            Property="IsMouseOver"
+            Value="true">
+                    <Setter
+                Property="Foreground"
+                Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Image x:Key="Logo" Source="Icons/Login.png"/>
+        <Image x:Key="Result" Source="Icons/LoanRequest.png"/>
+    </Window.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
             <Grid HorizontalAlignment="Left" Height="350" Margin="18,8,-2,0" VerticalAlignment="Top" Width="705">
@@ -60,7 +91,10 @@
 
         </Border>
         <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="290,35,301,0" VerticalAlignment="Top" Width="235" Content="Account Opening Form" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
-
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="620,45,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="620,21,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="75,95,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
+        <Label  x:Name="res" HorizontalAlignment="Left" Height="40" Margin="520,95,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Result }" RenderTransformOrigin="-0.857,-0.833"/>
 
     </Grid>
 </Window>

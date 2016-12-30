@@ -28,6 +28,8 @@ namespace WpfApplication1
             InitializeComponent();
             this.branch = branch;
             this.BranchCodeTxt.Text = branch.BranchId.ToString();
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
         }
 
 

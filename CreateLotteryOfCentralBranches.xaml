@@ -67,13 +67,13 @@
             </Grid>
 
         </Border>
-        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="555,14,0,0" VerticalAlignment="Top" Width="101"/>
-        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="645,14,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="539,14,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="661,14,0,0" VerticalAlignment="Top" Width="155"/>
         <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="70,24,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
         <Label  x:Name="Detail" HorizontalAlignment="Left" Height="40" Margin="505,100,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Part }" RenderTransformOrigin="-0.857,-0.833"/>
         <Label  x:Name="Participants" HorizontalAlignment="Left" Height="40" Margin="100,100,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Detail }" RenderTransformOrigin="-0.857,-0.833"/>
         <Label  Foreground="#FF292272" Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="35" Margin="115,24,296,0" VerticalAlignment="Top" Width="415" Content="Create Lottery Form By Central Branches" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.594,0.75" />
-        <Label   Name="BranchIdHeading" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="218" Content="BRANCH ID: 547"  Foreground="#FF000000"  Margin="557,44,51,0" />
+        <Label   Name="BranchIdHeading" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="218" Content="BRANCH ID: 547"  Foreground="#FF000000"  Margin="539,44,69,0" />
         <GridSplitter HorizontalAlignment="Left" Height="2" Margin="50,7,0,0" VerticalAlignment="Top" Width="725" Background="Black"/>
         <GridSplitter HorizontalAlignment="Left" Height="73" Margin="50,7,0,0" VerticalAlignment="Top" Width="2" Background="Black"/>
         <GridSplitter HorizontalAlignment="Left" Height="73" Margin="773,7,0,0" VerticalAlignment="Top" Width="2" Background="Black"/>
