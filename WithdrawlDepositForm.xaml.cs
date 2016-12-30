@@ -55,36 +55,86 @@ namespace WpfApplication1
             set { AccountBranchCode.Text = value; }
         }
 
+        public decimal PureBalance { get; set; }
+
+        public ACCOUNT_TYPES type { get; set; }
+
         public WithdrawlDepositForm(string accountId,
                                     string name,
                                     string ssn, 
                                     string remainder, 
                                     string branchcode,
                                     string opendate, 
-                                    string type)
+                                    string type,
+                                    ACCOUNT_TYPES t)
         {
             InitializeComponent();
+
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
 
             this._accountId = accountId;
             this._AccountPersonName = name;
             this._AccountPersonSSN = ssn;
-            this._AccountBalance = remainder;
+            this.PureBalance = decimal.Parse(remainder);
+            
             this._AccountBranchCode = branchcode;
             this._AccountOpeningDate = opendate;
             this._AccountType = type;
-            this.LeftHeadingAccount.Content = "AccountId: "+ this._accountId;
+            this.type = t;
+            this.LeftHeadingAccount.Content = "ACCOUNT NUMBER: " + this._accountId;
+            setBalanceOnWindow();
+
+        }
+        private void setBalanceOnWindow()
+        {
+            switch (this.type)
+            {
+                case ACCOUNT_TYPES.Saving_Account:
+                    this._AccountBalance = this.PureBalance + " Rials";
+                    break;
+                case ACCOUNT_TYPES.Current_Account:
+                    this._AccountBalance = this.PureBalance + " Rials";
+                    break;
+                case ACCOUNT_TYPES.Foreign_Currency_Account:
+                    this._AccountBalance = this.PureBalance + " Dollars";
+                    break;
+                case ACCOUNT_TYPES.Deposite_Account:
+                    this._AccountBalance = this.PureBalance + " Rials";
+                    break;
+            }
         }
 
         private void withdraw_confirm(object sender, RoutedEventArgs e)
         {
-            // to do
-            MessageBox.Show("Withdraw Confirmed");
+            if(!Validator.validateMoney(WithdrawalAmount.Text))
+            {
+                MessageBox.Show("Error Message: Invalid Amount For Withdrawal Amount");
+                return;
+            }
+            SqlWrapper w = SqlWrapper.getInstance();
+            w.withdraw(this._accountId,this.type,WithdrawalAmount.Text);
+            this.PureBalance -= decimal.Parse(WithdrawalAmount.Text);
+            MessageBox.Show(string.Format("Operation Successful: New Balance = {0}", this.PureBalance));
+            setBalanceOnWindow();
+            WithdrawalAmount.Clear();
+
+            
         }
 
         private void deposit_confirm(object sender, RoutedEventArgs e)
         {
-            // to do
-            MessageBox.Show("Deposit Confirmed");
+            if (!Validator.validateMoney(DepositAmount.Text))
+            {
+                MessageBox.Show("Error Message: Invalid Amount For Deposit Amount");
+                return;
+            }
+            SqlWrapper w = SqlWrapper.getInstance();
+            w.deposit(this._accountId, this.type, DepositAmount.Text);
+            this.PureBalance += decimal.Parse(DepositAmount.Text);
+            MessageBox.Show(string.Format("Operation Successful: New Balance = {0}", this.PureBalance));
+            setBalanceOnWindow();
+            DepositAmount.Clear();
         }
     }
 }

@@ -60,6 +60,55 @@ namespace WpfApplication1
                 int ret = 0;
                 return ret;
             }
+            
+            public void withdraw(string AccNo, ACCOUNT_TYPES type, string money)
+            {
+                int accountId = Int32.Parse(AccNo);
+                switch (type)
+                {
+                    case ACCOUNT_TYPES.Saving_Account:
+                        SavingAccount account1 = _ctx.SavingAccounts.Find(accountId);
+                        account1.Remainder -= decimal.Parse(money);
+                        break;
+                    case ACCOUNT_TYPES.Current_Account:
+                        CurrentAccount account2 = _ctx.CurrentAccounts.Find(accountId);
+                        account2.Remainder -= decimal.Parse(money);
+                        break;
+                    case ACCOUNT_TYPES.Foreign_Currency_Account:
+                        ForeignCurrencyAccount account3 = _ctx.ForeignCurrencyAccounts.Find(accountId);
+                        account3.Remainder -= decimal.Parse(money);
+                        break;
+                    case ACCOUNT_TYPES.Deposite_Account:
+                        DepositAccount account4 = _ctx.DepositAccounts.Find(accountId);
+                        account4.Remainder -= decimal.Parse(money);
+                        break;
+                }
+                _ctx.SaveChanges();
+            }
+            public void deposit(string AccNo, ACCOUNT_TYPES type, string money)
+            {
+                int accountId = Int32.Parse(AccNo);
+                switch (type)
+                {
+                    case ACCOUNT_TYPES.Saving_Account:
+                        SavingAccount account1 = _ctx.SavingAccounts.Find(accountId);
+                        account1.Remainder += decimal.Parse(money);
+                        break;
+                    case ACCOUNT_TYPES.Current_Account:
+                        CurrentAccount account2 = _ctx.CurrentAccounts.Find(accountId);
+                        account2.Remainder += decimal.Parse(money);
+                        break;
+                    case ACCOUNT_TYPES.Foreign_Currency_Account:
+                        ForeignCurrencyAccount account3 = _ctx.ForeignCurrencyAccounts.Find(accountId);
+                        account3.Remainder += decimal.Parse(money);
+                        break;
+                    case ACCOUNT_TYPES.Deposite_Account:
+                        DepositAccount account4 = _ctx.DepositAccounts.Find(accountId);
+                        account4.Remainder += decimal.Parse(money);
+                        break;
+                }
+                _ctx.SaveChanges();
+            }
 
 
     }

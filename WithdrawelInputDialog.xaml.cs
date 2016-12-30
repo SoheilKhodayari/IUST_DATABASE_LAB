@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -32,23 +33,126 @@ namespace WpfApplication1
 
         private void OKButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // DialogResult = true;
-
             string accountId = this.ResponseText;
-            bool account_exists = !accountId.Equals(""); // to be changed with db check
+            if (!Validator.IsDigitsOnly(accountId))
+            {
+                MessageBox.Show("Error Message: Invalid Account Number");
+                return;
+            }
+            bool account_exists = !accountId.Equals("");
+            SavingAccount sa = null;
+            CurrentAccount ca = null;
+            DepositAccount da = null;
+            ForeignCurrencyAccount fca = null;
+            string AccountType;
+            string AccountBranchCode;
+            string AccountBalance;
+            string AccountOpeningDate;
+            string CustomerName;
+            string CustomerSSN;
+
+            DbHelper helper = DbHelper.getInstance();
+            BankDBContext ctx = helper.getDbContext();
+
+            ACCOUNT_TYPES account_type = ACCOUNT_TYPES.Saving_Account;
+            var selected_account_obj = this.AccountTypeCombo.SelectedValue;
+            if (selected_account_obj == null)
+            {
+                MessageBox.Show("Error Message: Account type not specified"); return;
+            }
+            string selected_account = selected_account_obj.ToString();
+            if (selected_account == "Deposit")
+            {
+                account_type = ACCOUNT_TYPES.Deposite_Account;
+                da = helper.getDepositAccDetails(accountId);
+            }
+            else if (selected_account == "Current")
+            {
+                account_type = ACCOUNT_TYPES.Current_Account;
+                ca = helper.getCurrentAccDetails(accountId);
+            }
+            else if (selected_account == "ForeignCurrency")
+            {
+                account_type = ACCOUNT_TYPES.Foreign_Currency_Account;
+                fca = ctx.ForeignCurrencyAccounts.Where(x => x.AId.ToString() == accountId).FirstOrDefault();
+            }
+            else if (selected_account == "Saving")
+            {
+                account_type = ACCOUNT_TYPES.Saving_Account;
+                sa = helper.getSavingAccDetails(accountId);
+            }
+            if (sa == null && ca == null && da == null && fca == null)
+            {
+                account_exists = false;
+                MessageBox.Show("Error Message: Account Number does not exists");
+                return;
+            }
+
             if (account_exists)
             {
-
-                //---------------------------to be fetch from db ---------------------------//
-                string AccountType = "Saving Account";
-                string AccountBranchCode = "551521";
-                string AccountBalance = "2500000";
-                string AccountOpeningDate = "25-09-1996";
-                string CustomerName = "Soheil Khodayari";
-                string CustomerSSN = "0355546825";
+                if (account_type == ACCOUNT_TYPES.Saving_Account)
+                {
+                    AccountType = "Saving Account";
+                    AccountBranchCode = sa.BranchId_FK.ToString();
+                    AccountBalance = sa.Remainder.ToString();
+                    AccountOpeningDate = sa.OpeningDate.ToString();
+                    SavingAccount acc = ctx.SavingAccounts.Where(s => s.AId == sa.AId).FirstOrDefault();
+                    if (acc == null)
+                    {
+                        MessageBox.Show("Error Message: Account Number does not exists");
+                        return;
+                    }
+                    CustomerName = acc.Customer.Person.Name;
+                    CustomerSSN = acc.Customer.Person.SSN;
+                }
+                else if (account_type == ACCOUNT_TYPES.Deposite_Account)
+                {
+                    AccountType = "Deposit Account";
+                    AccountBranchCode = da.BranchId_FK.ToString();
+                    AccountBalance = da.Remainder.ToString();
+                    AccountOpeningDate = da.OpeningDate.ToString();
+                    DepositAccount acc = ctx.DepositAccounts.Where(s => s.AId == da.AId).FirstOrDefault();
+                    if (acc == null)
+                    {
+                        MessageBox.Show("Error Message: Account Number does not exists");
+                        return;
+                    }
+                    CustomerName = acc.Customer.Person.Name;
+                    CustomerSSN = acc.Customer.Person.SSN;
+                }
+                else if (account_type == ACCOUNT_TYPES.Foreign_Currency_Account)
+                {
+                    AccountType = "Foreign Currency Account";
+                    AccountBranchCode = fca.BranchId_FK.ToString();
+                    AccountBalance = fca.Remainder.ToString();
+                    AccountOpeningDate = fca.OpeningDate.ToString();
+                    ForeignCurrencyAccount acc = ctx.ForeignCurrencyAccounts.Where(s => s.AId == fca.AId).FirstOrDefault();
+                    if (acc == null)
+                    {
+                        MessageBox.Show("Error Message: Account Number does not exists");
+                        return;
+                    }
+                    CustomerName = acc.Customer.Person.Name;
+                    CustomerSSN = acc.Customer.Person.SSN;
+                }
+                else // if (type == ACCOUNT_TYPES.Current_Account)
+                {
+                    AccountType = "Current Account";
+                    AccountBranchCode = ca.BranchId_FK.ToString();
+                    AccountBalance = ca.Remainder.ToString();
+                    AccountOpeningDate = ca.OpeningDate.ToString();
+                    CurrentAccount acc = ctx.CurrentAccounts.Where(s => s.AId == ca.AId).FirstOrDefault();
+                    if (acc == null)
+                    {
+                        MessageBox.Show("Error Message: Account Number does not exists");
+                        return;
+                    }
+                    CustomerName = acc.Customer.Person.Name;
+                    CustomerSSN = acc.Customer.Person.SSN;
+                }
 
                 //--------------------------------------------------------------------------//
-                var wid = new WithdrawlDepositForm(accountId, CustomerName, CustomerSSN, AccountBalance , AccountBranchCode, AccountOpeningDate,AccountType);
+                var wid = new WithdrawlDepositForm(accountId, CustomerName, CustomerSSN, AccountBalance , AccountBranchCode, AccountOpeningDate,AccountType,account_type);
                 wid.Show();
                 this.Close();
             }
