@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfApplication1.Models;
 namespace WpfApplication1
 {
     /// <summary>
@@ -20,23 +20,56 @@ namespace WpfApplication1
     public partial class CreateLotteryOfCentralBranches : Window
     {
         public bool participateAllSavingAccounts {get;set;}
-        public List<string> participantAccounts { get; set; }
+        public List<SavingAccount> participantAccounts { get; set; }
 
         public string branch_code { get; set; }
         public CreateLotteryOfCentralBranches(string branch_code)
         {
             InitializeComponent();
             this.participateAllSavingAccounts = false;
-            this.participantAccounts = new List<string>();
+            this.participantAccounts = new List<SavingAccount>();
             this.branch_code = branch_code;
 
-            BranchIdHeading.Content = "BranchId: " + this.branch_code;
+            BranchIdHeading.Content = "BRANCH ID: " + this.branch_code;
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
             
         }
 
         private void btn_submit_lottery_creation_clicked(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Lottery Created!");
+            if(LotteryName.Text.Equals(""))
+            {
+                MessageBox.Show("Error Message: lottery name can not be empty");
+                return;
+            }
+            if(!Validator.validateDate(LotteryDate.Text))
+            {
+                MessageBox.Show("Error Message: invalid lottery date specified");
+                return;
+            }
+            if(!Validator.IsDigitsOnly(LotteryWinnersCount.Text))
+            {
+                MessageBox.Show("Error Message: invalid input for number of winners specified");
+                return;
+            }
+            string desc = string.Format("NoWinners:{0}_\n" + LotteryDescription.Text, LotteryWinnersCount.Text);
+            var helper = DbHelper.getInstance();
+            int id = helper.createLottery(LotteryName.Text, LotteryDate.Text, desc, branch_code);
+
+            if(this.participateAllSavingAccounts)
+            {
+                helper.addAllAccountAsParticipator(id.ToString());
+            }else
+            {
+               foreach(SavingAccount sa in this.participantAccounts)
+               {
+                   helper.addParticipator(id.ToString(), sa.AId.ToString());
+               }
+            }
+
+            MessageBox.Show(string.Format("Lottery Created with Code [LotteryId={0}]",id));
+            this.Close();
         }
 
         private void btn_cancel_lottery_creation_clicked(object sender, RoutedEventArgs e)
@@ -55,22 +88,21 @@ namespace WpfApplication1
         private void btn_add_particpant_account_clicked(object sender, RoutedEventArgs e)
         {
             var AId = LotteryParticipantAId.Text;
-            if(AId != "")
+            if(!Validator.IsDigitsOnly(AId))
             {
-                if(AId != "asasd")
-                {
-                    this.participantAccounts.Add(AId);
-                    MessageBox.Show("Participant Added!!");
-                }
-                else
-                {
-                    MessageBox.Show("Error:: Unvalid input given, AId should be a Number!!");
-                }  
+                MessageBox.Show("Error:: invalid input given, AId should be a number!!"); return;
             }
-            else
+            var helper = DbHelper.getInstance();
+            SavingAccount sa = helper.getSavingAccDetails(AId);
+            if(sa == null)
             {
-                MessageBox.Show("Error:: Unvalid input given, AId can not be empty");
-            }            
+                MessageBox.Show("Error Message: specified account does not exist."); return;
+            }
+            
+            this.participantAccounts.Add(sa);
+            MessageBox.Show("Participant registered and will be added after lottery creation");
+            LotteryParticipantAId.Text = "";
+
         }
 
         private void LotteryAddAll_Checked(object sender, RoutedEventArgs e)

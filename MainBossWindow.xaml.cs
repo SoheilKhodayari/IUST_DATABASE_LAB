@@ -175,7 +175,14 @@ namespace WpfApplication1
         private void set_branch_central_status()
         {
              // set  this.is_central based on db and bank_code and branch_code
-            this.is_central = "1";
+            if(this.branch.IsCentral)
+            {
+                this.is_central = "1";
+            }else
+            {
+                this.is_central = "0";
+            }
+            
         }
         private void go_to_CreateLotteryCentralBranch(object sender , RoutedEventArgs e)
         {

@@ -61,6 +61,8 @@ namespace WpfApplication1
             this.bossId = bossId;
             this.bankId = bankId;
             this.index = 1;
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
 
             var layoutInbox = InboxGrid;
 
