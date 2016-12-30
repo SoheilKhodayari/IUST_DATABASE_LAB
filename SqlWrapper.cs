@@ -109,6 +109,33 @@ namespace WpfApplication1
                 }
                 _ctx.SaveChanges();
             }
+            public List<decimal> DespositAccountRatio(string accNo)
+            {
+                decimal money = 0;
+                List<decimal> ratioes = new List<decimal>();
+                DepositAccount da = _ctx.DepositAccounts.Where(x => x.AId.ToString() == accNo).FirstOrDefault();
+                if(da == null)
+                {
+                    return ratioes;
+                }
+
+                int? interest = da.Branch.Bank.Interest;
+                if (interest == null) interest = 20;
+                if (interest != null)
+                {
+                    money = (da.Remainder * decimal.Parse(interest.ToString())) / 100;
+                }
+
+                ratioes.Add((decimal)interest);
+                ratioes.Add(money / 12);
+                ratioes.Add(money);
+                return ratioes;
+            }
+            public void transferMoney(string srcAcc, ACCOUNT_TYPES src, string destAcc, ACCOUNT_TYPES dest, string money)
+            {
+                this.withdraw(srcAcc, src, money);
+                this.deposit(destAcc, dest, money);
+            }
 
 
     }

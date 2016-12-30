@@ -307,7 +307,7 @@ namespace WpfApplication1
                 int bankid = _ctx.Database.SqlQuery<int>("Select bankid_fk from Branch where branchid=@bid",
                                                         new SqlParameter("bid", branchId)).FirstOrDefault();
                 
-                Bank bank = _ctx.Database.SqlQuery<Bank>("Select * from Bnak where bnakid=@bankid",
+                Bank bank = _ctx.Database.SqlQuery<Bank>("Select * from Bank where bnakid=@bankid",
                                                         new SqlParameter("bankid", bankid)).FirstOrDefault();
                 return bank;
             }
@@ -331,6 +331,7 @@ namespace WpfApplication1
                 }
 
                 List<decimal> ratioes = new List<decimal>();
+                ratioes.Add((decimal)interest);
                 ratioes.Add(money / 12);
                 ratioes.Add(money);
 

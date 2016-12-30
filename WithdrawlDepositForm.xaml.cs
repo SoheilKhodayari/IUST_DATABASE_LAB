@@ -118,10 +118,8 @@ namespace WpfApplication1
             MessageBox.Show(string.Format("Operation Successful: New Balance = {0}", this.PureBalance));
             setBalanceOnWindow();
             WithdrawalAmount.Clear();
-
-            
+      
         }
-
         private void deposit_confirm(object sender, RoutedEventArgs e)
         {
             if (!Validator.validateMoney(DepositAmount.Text))

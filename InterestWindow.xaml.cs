@@ -22,23 +22,12 @@ namespace WpfApplication1
     /// </summary>
     public partial class InterestWindow : Window
     {
-        protected BankDBContext db;
         public InterestWindow()
         {
             InitializeComponent();
-            db = new BankDBContext();
-            
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
 
-        }
-
-        private void btn_pay_clicked(object sender, RoutedEventArgs e)
-        {
-            string srcAccount = SourceDepositAccountNumber.Text;
-            string destAccount = DestSavingAccountNumber.Text;
-
-            // to do: update db
-
-            MessageBox.Show("Interest Paid!");
         }
 
         private void btn_calculate_account_interest_clicked(object sender, RoutedEventArgs e)
@@ -47,11 +36,27 @@ namespace WpfApplication1
              * fill the following ReadOnly TextBoxes
              * 1-InterestRatio 2-MonthlyInterest 3-YearlyInterest */
 
-            InterestRatio.Text = "20";
-            MonthlyInterest.Text = "500000";
-            YearlyInterest.Text = "6000000";
-            string d = db.Database.SqlQuery<string>("select name from person").FirstOrDefault<string>();
-            MessageBox.Show(d);
+            if(!Validator.IsDigitsOnly(DepositAccountNumber.Text))
+            {
+                MessageBox.Show("Error Message: Invalid Deposit Account Number");
+                return;
+            }
+            SqlWrapper w = SqlWrapper.getInstance();
+            List<decimal> values = w.DespositAccountRatio(DepositAccountNumber.Text);
+            if(values.Count() == 0)
+            {
+                MessageBox.Show("Error Message: Account Number does not exists.");
+                return;
+            }
+            InterestRatio.Text = values[0].ToString();
+            MonthlyInterest.Text = values[1].ToString();
+            YearlyInterest.Text = values[2].ToString();
+
+        }
+
+        private void btn_reset_clicked(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }
