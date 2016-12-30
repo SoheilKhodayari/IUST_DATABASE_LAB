@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfApplication1.Models;
 namespace WpfApplication1
 {
     /// <summary>
@@ -24,9 +24,22 @@ namespace WpfApplication1
             get { return AccountBalance.Text; }
             set { AccountBalance.Text = value; }
         }
+        string accountNumber { get; set; }
+        string reciver { get; set; }
+        string revicedDate { get; set; }
+        string amount { get; set; }
+        string serial { get; set; }
         public CheckClearingWindow()
         {
             InitializeComponent();
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
+
+            this.accountNumber = null;
+            this.reciver = null;
+            this.revicedDate = null;
+            this.amount = null;
+            this.serial = null;
         }
 
         private void btn_cancel_check_clearing(object sender, RoutedEventArgs e)
@@ -36,27 +49,86 @@ namespace WpfApplication1
 
         private void btn_evaluate_check_clearing(object sender, RoutedEventArgs e)
         {
-            DishonorCheckBtn.IsEnabled = false;
-            CashCheckBtn.IsEnabled = false;
 
+            this.accountNumber = AccountNumber.Text;
+            this.reciver = Receiver.Text;
+            this.revicedDate = ReceivedDate.Text;
+            this.amount = Amount.Text;
+            this.serial = SerialNumber.Text;
+            if(!Validator.IsDigitsOnly(accountNumber))
+            {
+                MessageBox.Show("Error Message: invalid account number");
+                return;
+            }
+            if(!Validator.validateChar(reciver))
+            {
+                MessageBox.Show("Error Message: invalid reciver parameter");
+                return;
+            }
+            if(!Validator.validateDate(revicedDate))
+            {
+                MessageBox.Show("Error Message: invalid recived date specifed");
+                return;
+            }
+            if(!Validator.validateMoney(amount))
+            {
+                MessageBox.Show("Error Message: invalid amount parameter");
+                return;
+            }
+
+            DbHelper helper = DbHelper.getInstance();
+            CurrentAccount ca1 = helper.getCurrentAccDetails(accountNumber);
+            CurrentAccount ca2 = helper.getDbContext().CurrentAccounts.Where(a => a.AId.ToString() == accountNumber).FirstOrDefault();
+            if (ca1 == null || ca2 == null)
+            {
+                MessageBox.Show("Error Message: Account number does not exist.");
+                return;
+            }
+            AccountBalanceLabelTxt = ca2.Remainder.ToString();
+
+            Check check = helper.getCheckOfAccount(accountNumber);
+            if(check == null)
+            {
+                MessageBox.Show("Error Message: Specified account does not have a check registered with it.");
+            }else
+            {
+                SerialNumber.Text = check.CheckId.ToString();
+            }
+
+            MessageBox.Show("[Next] Press Cash the Check Now");
             // check account number balance and set "AccountBalanceLabelTxt"
             // and then enable either of "DishonorCheckBtn" or "CashCheckBtn"
-
-            AccountBalanceLabelTxt = "100000";
-            /* for now, suppose that check is cleared */
-            DishonorCheckBtn.IsEnabled = false;
             CashCheckBtn.IsEnabled = true;
+            /* for now, suppose that check is cleared */
+
             
         }
 
-        private void btn_confirm_dishonor(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Dishonor Check");
-        }
 
         private void btn_cash_check(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Cash the Check");
+            if( this.accountNumber == null || 
+                this.reciver == null  ||
+                this.revicedDate == null ||
+                this.amount == null ||
+                this.serial == null )
+            {
+                MessageBox.Show("Error Message: Please press the evaluate button first");
+                return;
+            }
+            DbHelper helper = DbHelper.getInstance();
+            int result = helper.controlCheckPaper(accountNumber, reciver, revicedDate, amount);
+            if(result == -1)
+            {
+                MessageBox.Show("Error Message: Specified account does not have a check registered with it.");
+            }else if(result == -2)
+            {
+                MessageBox.Show("Error Message: Specified account does not have enough balance.");
+            }
+            else
+            {
+                MessageBox.Show(string.Format("CheckPaper registered Successfully with Code [ CheckPaperId={0} ]",result));
+            }
             this.Close();
         }
     }

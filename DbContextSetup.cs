@@ -251,24 +251,27 @@ namespace WpfApplication1
                 {
                     amount = getSavingAccDetails(AccNo).Remainder;
                     _ctx.Database.ExecuteSqlCommand(
-                        "update SavingAccount set money=@money where AID=@accNo",
-                        new SqlParameter("money", amount-decimal.Parse(money))
+                        "update SavingAccount set Remainder=@money where AID=@accNo",
+                        new SqlParameter("money", amount-decimal.Parse(money)),
+                        new SqlParameter("accNo", AccNo)
                     );
                 }
                 else if (type == ACCOUNT_TYPES.Deposite_Account)
                 {
                     amount = getDepositAccDetails(AccNo).Remainder;
                     _ctx.Database.ExecuteSqlCommand(
-                        "update DepositAccount set money=@money where AID=@accNo",
-                        new SqlParameter("money", amount - decimal.Parse(money))
+                        "update DepositAccount set Remainder=@money where AID=@accNo",
+                        new SqlParameter("money", amount - decimal.Parse(money)),
+                        new SqlParameter("accNo", AccNo)
                     );
                 }
                 else if (type == ACCOUNT_TYPES.Current_Account)
                 {
                     amount = getCurrentAccDetails(AccNo).Remainder;
                     _ctx.Database.ExecuteSqlCommand(
-                        "update CurrentAccount set money=@money where AID=@accNo",
-                        new SqlParameter("money", amount - decimal.Parse(money))
+                        "update CurrentAccount set Remainder=@mmoney where AID=@accNo",
+                        new SqlParameter("mmoney", amount - decimal.Parse(money)),
+                        new SqlParameter("accNo", AccNo)
                     );
                 }
             }
@@ -280,24 +283,27 @@ namespace WpfApplication1
                 {
                     amount = getSavingAccDetails(AccNo).Remainder;
                     _ctx.Database.ExecuteSqlCommand(
-                        "update SavingAccount set money=@money where AID=@accNo",
-                        new SqlParameter("money", amount + decimal.Parse(money))
+                        "update SavingAccount set Remainder=@money where AID=@accNo",
+                        new SqlParameter("money", amount + decimal.Parse(money)),
+                        new SqlParameter("accNo", AccNo)
                     );
                 }
                 else if (type == ACCOUNT_TYPES.Deposite_Account)
                 {
                     amount = getDepositAccDetails(AccNo).Remainder;
                     _ctx.Database.ExecuteSqlCommand(
-                        "update DepositAccount set money=@money where AID=@accNo",
-                        new SqlParameter("money", amount + decimal.Parse(money))
+                        "update DepositAccount set Remainder=@money where AID=@accNo",
+                        new SqlParameter("money", amount + decimal.Parse(money)),
+                        new SqlParameter("accNo", AccNo)
                     );
                 }
                 else if (type == ACCOUNT_TYPES.Current_Account)
                 {
                     amount = getCurrentAccDetails(AccNo).Remainder;
                     _ctx.Database.ExecuteSqlCommand(
-                        "update CurrentAccount set money=@money where AID=@accNo",
-                        new SqlParameter("money", amount + decimal.Parse(money))
+                        "update CurrentAccount set Remainder=@money where AID=@accNo",
+                        new SqlParameter("money", amount + decimal.Parse(money)),
+                        new SqlParameter("accNo", AccNo)
                     );
                 }
             }
@@ -386,13 +392,23 @@ namespace WpfApplication1
                 return check;
             }
 
-            public int controlCheckPaper(string accNo, string recvName, string recvDate, string Amount, string checkId = null)
+            /// <summary>
+            /// </summary>
+            /// <param name="accNo"></param>
+            /// <param name="recvName"></param>
+            /// <param name="recvDate"></param>
+            /// <param name="Amount"></param>
+            /// <param name="checkId"></param>
+            /// <returns> -1 when no such check, -2 when not enough balance, -3 when no enough paper, else inserted paper Id</returns>
+            public int controlCheckPaper(string accNo, string recvName, string recvDate, string Amount)
             {
                 int paperId = -1;
                 CurrentAccount ca = getCurrentAccDetails(accNo);
                 Check check = getCheckOfAccount(accNo);
+                
                 if ( check != null)
                 {
+                    if (check.PaperNumber < 0) { return -3; }
                     if (ca.Remainder >= decimal.Parse(Amount))
                     {
                         _ctx.Database.ExecuteSqlCommand(
@@ -403,11 +419,17 @@ namespace WpfApplication1
                         );
                         withdraw(accNo, ACCOUNT_TYPES.Current_Account, Amount);
                         paperId = decimal.ToInt32(_ctx.Database.SqlQuery<decimal>(
-                            "insert into \"CheckPaper\" values(@amount,@receiver,@recvdate);select @@IDENTITY;",
+                            "insert into \"Check_Paper\" values(@aid,@checkid,@amount,@receiver,@recvdate);select @@IDENTITY;",
+                            new SqlParameter("aid", check.AId),
+                            new SqlParameter("checkid", check.CheckId),
                             new SqlParameter("amount", Amount),
                             new SqlParameter("receiver", recvName),
                             new SqlParameter("recvdate", System.Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd"))).Single()
                         );
+                    }
+                    else
+                    {
+                        paperId = -2;
                     }
                 }
                 return paperId;
