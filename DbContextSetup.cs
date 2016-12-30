@@ -455,27 +455,39 @@ namespace WpfApplication1
                 return id;
             }
 
-            public int creditCradInsurance(int type, string number, string branchId)
+            private static Random random = new Random();
+            public static string RandomString(int length)
+            {
+                const string chars = "0123456789";
+                return new string(Enumerable.Repeat(chars, length)
+                  .Select(s => s[random.Next(s.Length)]).ToArray());
+            }
+            public List<string> creditCradIssuance(int type, string number)
             {
                 int id = -1;
+                List<string> result = new List<string>();
                 DateTime dt = DateTime.Now;
                 string date = (dt.Year + 6).ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString();
                 Random rnd = new Random();
-                int cvv2 = rnd.Next(10000, 100000);
+                int cvv2 = rnd.Next(100, 9999);
                 int spass = rnd.Next(10000, 100000);
                 if(type == 0) // number is accNo
                 {
-                    decimal amount = getSavingAccDetails(number).Remainder;
-                    id = decimal.ToInt32(_ctx.Database.SqlQuery<decimal>(
-                            "insert into CreditCard values(@rem,@exp,@cvv2,@pass,@spass,@type,@aid);select @@IDENTITY;",
+                    SavingAccount acc = getSavingAccDetails(number);
+                    var amount = (decimal?)acc.Remainder;
+
+                    var iid = _ctx.Database.SqlQuery<decimal>(
+                            "insert into CreditCard values(@id,@rem,@exp,@cvv2,@pass,@spass,@type,@aid);select @@IDENTITY;",
+                            new SqlParameter("id", RandomString(16)),
                             new SqlParameter("rem", amount),
                             new SqlParameter("exp", date),
                             new SqlParameter("cvv2", cvv2),
                             new SqlParameter("pass", "12345"),
                             new SqlParameter("spass", spass),
                             new SqlParameter("type", type),
-                            new SqlParameter("aid", number)).Single()
-                        );
+                            new SqlParameter("aid", number)).Single();
+                        
+                    result.AddRange(new string[] {iid.ToString(), amount.ToString(),date.ToString(),cvv2.ToString(),"12345",spass.ToString()});
                 }
                 else // number is money amount
                 {
@@ -489,9 +501,10 @@ namespace WpfApplication1
                             new SqlParameter("type", type),
                             new SqlParameter("aid", DBNull.Value)).Single()
                         );
+                    result.AddRange(new string[] { id.ToString(), number.ToString(),date.ToString(), cvv2.ToString(), "12345", spass.ToString() });
                 }
                 
-                return id;
+                return result;
             }
 
             public List<string> getForeignCurrencies(string branchId)

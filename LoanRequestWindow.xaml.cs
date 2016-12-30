@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -22,8 +23,10 @@ namespace WpfApplication1
 
         public int loanMonthCount { get; set; }
         public int loanInterestRate { get; set; }
-        public int loanAmount { get; set; }
+        public decimal loanAmount { get; set; }
         public bool loanValid { get; set; }
+
+        public int returningDuration { get; set; }
         public enum InterestRates
         {
             threeMonth=20,
@@ -40,6 +43,9 @@ namespace WpfApplication1
         {
             this.loanValid = false;
             InitializeComponent();
+
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
         }
 
         private void setInterestRate(int monthCount)
@@ -68,6 +74,7 @@ namespace WpfApplication1
             if (Int32.TryParse(monthItem.Tag.ToString(), out month))
             {
                 this.loanMonthCount = month;
+                this.returningDuration = month;
                 setInterestRate(month);
                 this.loanValid = true;
             }
@@ -83,31 +90,18 @@ namespace WpfApplication1
 
         private void CalculateInstallments(object sender, RoutedEventArgs e)
         {
-            int amount = 0;
-            if (Int32.TryParse(LoanAmount.Text, out amount))
+            if(!Validator.validateMoney(LoanAmount.Text))
             {
-                this.loanAmount = amount;
-                this.loanValid = true;
+                MessageBox.Show("Error Message: invalid loan amount");
+                return;
             }
-            else
-            {
-                this.loanValid = false;
-                MessageBox.Show("Error :: unnumerical value for amount selected!");
-            }
+            this.loanAmount = decimal.Parse(LoanAmount.Text);
+            decimal __totalPayable = ((decimal)this.loanInterestRate / 100m) * (decimal)this.loanAmount + (decimal)this.loanAmount;
+            decimal __monthlyInstallment = __totalPayable / (decimal)this.loanMonthCount;
 
-            // to do : validate account number here
+            MonthlyInstallment.Text = __monthlyInstallment.ToString("#.##");
+            TotalPayable.Text = __totalPayable.ToString("#.##");
 
-            if (this.loanValid)
-            {
-                decimal __totalPayable = ((decimal)this.loanInterestRate / 100m) * (decimal)this.loanAmount + (decimal)this.loanAmount;
-                decimal __monthlyInstallment = __totalPayable / (decimal)this.loanMonthCount;
-
-                MonthlyInstallment.Text = __monthlyInstallment.ToString("#.##");
-                TotalPayable.Text = __totalPayable.ToString("#.##");
-            }else
-            {
-                MessageBox.Show("Error :: Loan parameters are not correctly specified!!");
-            }
         }
 
         private void CancelLoan(object sender, RoutedEventArgs e)
@@ -117,8 +111,20 @@ namespace WpfApplication1
 
         private void FinalizeLoan(object sender, RoutedEventArgs e)
         {
+            if(!Validator.IsDigitsOnly(SavingAccountNumber.Text))
+            {
+                MessageBox.Show("Error Messge: invalid account number"); return;
+            }
             // to do: interact with db
-            MessageBox.Show("Loan Finalized");
+            
+            var db = DbHelper.getInstance();
+            SavingAccount sa = db.getSavingAccDetails(SavingAccountNumber.Text);
+            if(sa == null)
+            {
+                MessageBox.Show("Error Messge: saving account does not exists"); return;
+            }
+            int id = db.loanRequest(this.loanAmount.ToString(), this.loanInterestRate.ToString(), this.returningDuration.ToString(),sa.BranchId_FK.ToString(),sa.CId_FK.ToString());
+            MessageBox.Show(string.Format("Loan Finalized with code [loanId = {0}]",id));
         }
 
 

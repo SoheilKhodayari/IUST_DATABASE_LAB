@@ -31,6 +31,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Image x:Key="Logo" Source="Icons/CheckClear.png"/>
     </Window.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="400">
@@ -40,8 +41,8 @@
                     <RowDefinition Height="0*"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy1" HorizontalAlignment="Left" Margin="51,91,0,0" TextWrapping="Wrap" Text="Card Type" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
-                <Label Content="Card Information" HorizontalAlignment="Left" Height="30" Margin="115,26,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
-                <Separator HorizontalAlignment="Left" Height="15" Margin="25,48,0,0" VerticalAlignment="Top" Width="385"/>
+                <Label Content="Card Information" HorizontalAlignment="Left" Height="30" Margin="90,26,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Separator HorizontalAlignment="Left" Height="7" Margin="25,56,0,0" VerticalAlignment="Top" Width="315"/>
                 <TextBlock x:Name="AccountNumberTxtBlock" Visibility="Collapsed" HorizontalAlignment="Left" Margin="51,135,0,0" TextWrapping="Wrap" Text="Account Number:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
                 <TextBox Name="AccountNumber" Visibility="Collapsed"  HorizontalAlignment="Left" Height="23" Margin="205,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.261"/>
                 <TextBlock x:Name="BalanceTxtBlock" Visibility="Collapsed"  HorizontalAlignment="Left" Margin="51,179,0,0" TextWrapping="Wrap" Text="Balance(Rials):" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501"/>
@@ -55,8 +56,10 @@
             </Grid>
 
         </Border>
-        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="130,35,115,0" VerticalAlignment="Top" Width="247" Content="Credit Card Issuance" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
-
+        <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="125,20,120,0" VerticalAlignment="Top" Width="247" Content="Credit Card Issuance" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="337,17,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="337,47,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="105,110,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
 
     </Grid>
 </Window>

@@ -138,5 +138,63 @@ namespace WpfApplication1
             }
 
 
+            private static Random random = new Random();
+            public static string RandomString(int length)
+            {
+                const string chars = "0123456789";
+                return new string(Enumerable.Repeat(chars, length)
+                  .Select(s => s[random.Next(s.Length)]).ToArray());
+            }
+            public List<string> creditCradIssuance(int type, string number)
+            {
+                int id = -1;
+                List<string> result = new List<string>();
+                DateTime dt = DateTime.Now;
+                string date = (dt.Year + 6).ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString();
+                Random rnd = new Random();
+                int cvv2 = rnd.Next(100, 9999);
+                int spass = rnd.Next(10000, 100000);
+                if (type == 0) // number is accNo
+                {
+                    SavingAccount acc = _ctx.SavingAccounts.Where(x => x.AId.ToString() == number).First();
+
+                    CreditCard c = new CreditCard
+                    {
+                        CardNumber = RandomString(16),
+                        Remainder = acc.Remainder,
+                        ExpirationDate = new DateTime().AddYears(5),
+                        CVV2 = cvv2.ToString(),
+                        Password = "12345",
+                        SecondaryPassword = spass.ToString(),
+                        CardType = true,
+                        AId_FK = acc.AId
+                    };
+                    _ctx.CreditCards.Add(c);
+                    _ctx.SaveChanges();
+
+                    result.AddRange(new string[] { c.CardNumber.ToString(), c.Remainder.ToString(), c.ExpirationDate.ToString(), cvv2.ToString(), "12345", spass.ToString() });
+                }
+                else // number is money amount
+                {
+                    CreditCard c = new CreditCard
+                    {
+                        CardNumber = RandomString(16),
+                        Remainder = decimal.Parse(number),
+                        ExpirationDate = new DateTime().AddYears(5),
+                        CVV2 = cvv2.ToString(),
+                        Password = "12345",
+                        SecondaryPassword = spass.ToString(),
+                        CardType = false,
+                        AId_FK = null
+                    };
+                    _ctx.CreditCards.Add(c);
+                    _ctx.SaveChanges();
+                    result.AddRange(new string[] { id.ToString(), number.ToString(), date.ToString(), cvv2.ToString(), "12345", spass.ToString() });
+                }
+
+                return result;
+            }
+
+
     }
 }

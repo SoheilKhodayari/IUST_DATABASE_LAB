@@ -31,6 +31,8 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Image x:Key="Logo" Source="Icons/Loan.png"/>
+        <Image x:Key="Result" Source="Icons/WorkingHourMenu.png"/>
     </Window.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" Margin="50,80,0,0" VerticalAlignment="Top" Width="725">
@@ -51,7 +53,7 @@
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy3" HorizontalAlignment="Left" Margin="25,166,0,0" TextWrapping="Wrap" Text="Returning Duration:" VerticalAlignment="Top" Width="110"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy4" HorizontalAlignment="Left" Margin="25,204,0,0" TextWrapping="Wrap" Text="Interest rate:" VerticalAlignment="Top" Width="95"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy5" HorizontalAlignment="Left" Margin="25,129,0,0" TextWrapping="Wrap" Text="Amount(Rials):" VerticalAlignment="Top" Width="95"/>
-                <TextBlock x:Name="PrimaryBalanceTxt_Copy6" HorizontalAlignment="Left" Margin="25,76,0,0" TextWrapping="Wrap" Text="Customer Account Number:" VerticalAlignment="Top" Width="150"/>
+                <TextBlock x:Name="PrimaryBalanceTxt_Copy6" HorizontalAlignment="Left" Margin="25,76,0,0" TextWrapping="Wrap" Text="Saving Account Number:" VerticalAlignment="Top" Width="150"/>
                 <TextBlock x:Name="PrimaryBalanceTxt_Copy7" HorizontalAlignment="Left" Margin="394,169,0,0" TextWrapping="Wrap" Text="Total Payable:" VerticalAlignment="Top" RenderTransformOrigin="0.56,-0.501" Width="96"/>
                 <TextBox IsReadOnly="True" Name="MonthlyInstallment" HorizontalAlignment="Left" Height="23" Margin="520,122,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.167,0.261"/>
                 <TextBox x:Name="SavingAccountNumber" HorizontalAlignment="Left" Height="23" Margin="190,74,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.167,0.261"/>
@@ -76,7 +78,9 @@
 
         </Border>
         <Label  Name="TopHeadingAccountForm" HorizontalAlignment="Center" Height="40" Margin="310,35,326,0" VerticalAlignment="Top" Width="190" Content="Loan Request Form" FontWeight="Bold" FontSize="20" Foreground="#FF292272" />
-
-
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="620,55,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="620,30,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label  x:Name="res" HorizontalAlignment="Left" Height="40" Margin="475,105,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Result }" RenderTransformOrigin="-0.857,-0.833"/>
+        <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="100,105,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
     </Grid>
 </Window>
