@@ -32,6 +32,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Image x:Key="Logo" Source="Icons/WorkingHourMenu.png"/>
     </Window.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="280" Margin="50,65,0,0" VerticalAlignment="Top" Width="395">
@@ -42,7 +43,7 @@
                 </Grid.RowDefinitions>
 
                 <Separator HorizontalAlignment="Left" Height="15" Margin="10,40,0,0" VerticalAlignment="Top" Width="330"/>
-                <Label Content="Absence Form" HorizontalAlignment="Left" Height="30" Margin="17,18,0,0" VerticalAlignment="Top" Width="170" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+                <Label Content="Absence Form" HorizontalAlignment="Left" Height="30" Margin="70,10,0,0" VerticalAlignment="Top" Width="170" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
                 <TextBlock HorizontalAlignment="Left" Margin="33,73,0,0" TextWrapping="Wrap" Text="Staff Name:" VerticalAlignment="Top"/>
                 <TextBox Name="StaffName"  HorizontalAlignment="Left" Height="23" Margin="197,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
                 <TextBlock HorizontalAlignment="Left" Margin="33,109,0,0" TextWrapping="Wrap" Text="Staff SSN:" VerticalAlignment="Top"/>
@@ -54,8 +55,10 @@
             </Grid>
 
         </Border>
-        <Label  Name="TopHeadingWorkingHours" HorizontalAlignment="Center" Height="40" Margin="105,20,92,0" VerticalAlignment="Top" Width="295" Content="Manage Staff Working Hours" FontWeight="Bold" FontSize="20" Foreground="#FF292272" RenderTransformOrigin="0.304,0.625" />
-
+        <Label  Name="TopHeadingWorkingHours" HorizontalAlignment="Center" Height="40" Margin="50,13,147,0" VerticalAlignment="Top" Width="295" Content="Manage Staff Working Hours" FontWeight="Bold" FontSize="20" Foreground="#FF292272" RenderTransformOrigin="0.304,0.625" />
+        <Label Name="TimeLabel" Content="TIME:  13:15" HorizontalAlignment="Left" Height="30" Margin="352,10,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="DateLabel" Content="DATE:  12/3/2016" HorizontalAlignment="Left" Height="25" Margin="350,35,-13,0" VerticalAlignment="Top" Width="155"/>
+        <Label  x:Name="Logo" HorizontalAlignment="Left" Height="40" Margin="70,85,0,0" VerticalAlignment="Top" Width="45"  Content="{StaticResource Logo }" RenderTransformOrigin="-0.857,-0.833"/>
 
     </Grid>
 </Window>

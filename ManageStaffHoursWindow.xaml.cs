@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication1.Models;
 
 namespace WpfApplication1
 {
@@ -24,6 +25,8 @@ namespace WpfApplication1
         {
             InitializeComponent();
             this.branch_code = branch_code;
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
         }
 
         private void btn_reset_clicked(object sender, RoutedEventArgs e)
@@ -41,7 +44,37 @@ namespace WpfApplication1
         {
             var staffName = StaffName.Text;
             var staffSSN = StaffSSN.Text;
-            MessageBox.Show("form submitted!");
+            if(!Validator.validateChar(staffName))
+            {
+                MessageBox.Show("Error Message: invalid name parameter");
+                return;
+            }
+            if(!Validator.IsDigitsOnly(staffSSN))
+            {
+                MessageBox.Show("Error Message: invalid ssn parameter");
+                return;
+            }
+            var helper = DbHelper.getInstance();
+            Staff s = helper.getStaffBySSN(staffSSN);
+            if(s == null)
+            {
+                MessageBox.Show("Error Message: no such staff with SSN specified");
+                return;
+            }
+            if(s.BranchId_FK.ToString() != this.branch_code)
+            {
+                MessageBox.Show("Error Message: You are only authorized to set absence for your own staff (in your branch)!!");
+                return;
+            }
+            Person p = helper.getPersonBySSN(staffSSN);
+            if(p.Name != staffName)
+            {
+                MessageBox.Show("Error Message: Name and SSN does not match!!");
+                return;
+            }
+            int status = helper.addAbsence(staffSSN);
+            if (status < 0) MessageBox.Show("FatalError: try again");
+            MessageBox.Show("Absence Has Been Set Successfully");
         }
     }
 }
