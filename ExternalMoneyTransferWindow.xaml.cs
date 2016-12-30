@@ -202,7 +202,7 @@ namespace WpfApplication1
 
             //-- generate recipt
             
-            string line0 = "\n===Transaction Report ===\n";
+            string line0 = "\n===Transaction Report ===\n\n";
             string line1 = string.Format("+ Requester Name: {0} \n",reqName);
             string line2 = string.Format("+ Transfer Amount: {0} Rials \n",amountTransfer);
             string line3 = string.Format("+ From Bank: {0} to Bank: {1}\n", src_account_bank, dest_account_bank);

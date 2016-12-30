@@ -100,7 +100,7 @@ namespace WpfApplication1
 
         private void go_to_InternalTransferMoneyWindow(object sender, RoutedEventArgs e)
         {
-            var window = new InternalMoneyTransferWindow(this.bank_code);
+            var window = new InternalMoneyTransferWindow(this.bank_code,this.bank_name);
             window.Show();
         }
 
