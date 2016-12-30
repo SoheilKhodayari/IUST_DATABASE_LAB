@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfApplication1.Models;
 namespace WpfApplication1
 {
     /// <summary>
@@ -22,17 +22,19 @@ namespace WpfApplication1
         public int absenceCount { get; set; }
         public PresentWorkingHoursWindow(int cnt)
         {
+            
             InitializeComponent();
             this.absenceCount = cnt;
             AbsenceCount.Text = String.Format("{0}", this.absenceCount);
+            DateLabel.Content = "TIME: " + DateTime.Now.ToString("hh:mm:ss tt");
+            TimeLabel.Content = "DATE: " + DateTime.Now.ToShortDateString();
 
         }
 
-        private void PresentCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("present confirmed!!");
-            CheckBox ch = (CheckBox)sender;
-            ch.IsEnabled = false;
+            this.Close();
         }
+
     }
 }

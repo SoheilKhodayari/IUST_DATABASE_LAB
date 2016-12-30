@@ -148,8 +148,12 @@ namespace WpfApplication1
 
         private void go_to_PresentWorkingHoursWindow(object sender, RoutedEventArgs e)
         {
-            var absentCount = 3; // absenceCount of staffId = this.loginId
-            var window = new PresentWorkingHoursWindow(absentCount);
+            // absenceCount of staffId = this.loginId
+            int absenceCount;
+            int? cnt = staff.AbsenceCount;
+            if (cnt == null) absenceCount = 0;
+            else absenceCount = (int) cnt;
+            var window = new PresentWorkingHoursWindow(absenceCount);
             window.Show();
         }
         private void go_to_LoginWindow(object sender, RoutedEventArgs e)
